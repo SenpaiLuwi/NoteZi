@@ -1,0 +1,367 @@
+// XML ACTIVITY_TASK_XML //
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-1dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_Top_id"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardBackgroundColor="#DFD8C8"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-1dp">
+
+        <TextView
+            android:id="@+id/Txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Hello Student"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-1dp" />
+
+        <TextView
+            android:id="@+id/Txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:text="You've got "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="70dp"
+            android:text="Tasks Today"
+            android:textColor="#4CAF50"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_id"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/imagecircle" />
+
+    </androidx.cardview.widget.CardView>
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#DFD8C8"
+        android:background="@drawable/search_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CardView_Top_id"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/Txt4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project:"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.279" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/Add_Btn_id"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:background="#FDFDFD"
+        android:clickable="true"
+        app:backgroundTint="#52575D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/CardView_Top_id"
+        app:layout_constraintVertical_bias="0.277"
+        app:srcCompat="@drawable/add_button"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_Task2_id"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#CABFAB"
+        android:clickable="true"
+        android:longClickable="true"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424">
+
+        <TextView
+            android:id="@+id/txt_subject_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="100dp"
+            android:gravity="center"
+            android:text="APPDEV"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_Btn_id"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:backgroundTint="#CABFAB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.998" >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btn_task_id"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:src="@drawable/task"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btn_home_id"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:src="@drawable/home"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btn_sched_id"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:src="@drawable/sched"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_id"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:src="@drawable/profile"
+            tools:ignore="DuplicateIds,SpeakableTextPresentCheck" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+// ACTIVITY SUBMIT EDIT XML //
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubmitEditActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_Top_id"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardBackgroundColor="#CABFAB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-1dp">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#000000"
+            android:text="ADD" />
+
+        <TextView
+            android:id="@+id/Txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="You Running Tasks "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp"
+            android:text="Submit or Edit "
+            android:textColor="#4CAF50"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/search_bar"
+            android:backgroundTint="#DFD8C8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CardView_Top_id"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.911" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+// ACTIVITY ADD EDIT XML //
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#CABFAB"
+        app:cardCornerRadius="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" >
+
+        <TextView
+            android:id="@+id/TxtAddEdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="100dp"
+            android:text="ADD & EDIT"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="280dp"
+        android:backgroundTint="#CABFAB"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.197">
+
+        <EditText
+            android:id="@+id/edtTxtName"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:text="NAME:" />
+
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="80dp"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:text="DEADLINE:" />
+
+        <EditText
+            android:id="@+id/editTextText3"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="140dp"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:text="LINK:" />
+
+        <Button
+            android:id="@+id/SubBtn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="#000000"
+            android:text="SUBMIT" />
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
