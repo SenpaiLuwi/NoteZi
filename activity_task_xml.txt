@@ -14,7 +14,7 @@
         android:id="@+id/CardView_Top_id"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        app:cardBackgroundColor="#CABFAB"
+        app:cardBackgroundColor="#DFD8C8"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
