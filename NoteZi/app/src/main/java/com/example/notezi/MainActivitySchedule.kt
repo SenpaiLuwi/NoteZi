@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class MainActivity : AppCompatActivity() {
+class MainActivitySchedule : AppCompatActivity() {
 
     private lateinit var homeBtn: View
     private lateinit var taskBtn: View
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_schedule)
 
         // Initialize the buttons
         homeBtn = findViewById(R.id.home_btn)

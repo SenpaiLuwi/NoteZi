@@ -7,24 +7,17 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
-import android.view.animation.Animation
-import android.view.animation.TranslateAnimation
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
-@SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")
+@SuppressLint("CustomSplashScreen")
 class MainSplashActivity : AppCompatActivity() {
 
     // Variables Used
     private lateinit var progBar: ProgressBar
-    private lateinit var imageViewOne: ImageView
-    private lateinit var imageViewTwo: ImageView
-    private lateinit var imageViewThree: ImageView
-    private lateinit var imageViewFour: ImageView
     private lateinit var splashText: TextView
 
     private val sentences = mutableListOf(
@@ -37,6 +30,8 @@ class MainSplashActivity : AppCompatActivity() {
         "Sit Tight"
     )
 
+    private val textChangeHandler = Handler()
+
     // Start of OnCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,40 +39,31 @@ class MainSplashActivity : AppCompatActivity() {
 
         // Initialize variables
         progBar = findViewById(R.id.progBar_id)
-        imageViewOne = findViewById(R.id.imageViewOne)
-        imageViewTwo = findViewById(R.id.imageViewTwo)
-        imageViewThree = findViewById(R.id.imageViewThree)
-        imageViewFour = findViewById(R.id.imageViewFour)
         splashText = findViewById(R.id.splashText_id)
 
-        // Start animations with delays
-        startAnimation(imageViewOne, 0)
-        startAnimation(imageViewTwo, 1500)
-        startAnimation(imageViewThree, 3000)
-        startAnimation(imageViewFour, 4500)
+        // Start changing text every 3 seconds
+        startTextChange()
 
         // Loading delay of 10 secs
         Handler().postDelayed({
             checkInternetAndNavigate()
-        }, 15000)
+        }, 5000)
     }
 
-    // Start of StartAnimation
-    private fun startAnimation(imageView: ImageView, delay: Long) {
-        Handler().postDelayed({
-            animateUpDown(imageView)
-        }, delay)
+    // Start changing text every 3 seconds
+    private fun startTextChange() {
+        textChangeHandler.postDelayed(object : Runnable {
+            override fun run() {
+                splashText.text = getRandomSentence()
+                textChangeHandler.postDelayed(this, 3000)
+            }
+        }, 3000)
     }
 
-    // Start of Animation for Up and Down
-    private fun animateUpDown(imageView: ImageView) {
-        val animation = TranslateAnimation(0f, 0f, 0f, 20f)
-        animation.duration = 500
-        animation.repeatMode = Animation.REVERSE
-        animation.repeatCount = Animation.INFINITE
-        imageView.startAnimation(animation)
-        // Change splashText text randomly for each animation
-        splashText.text = getRandomSentence()
+    // Stop changing text when the activity is destroyed
+    override fun onDestroy() {
+        textChangeHandler.removeCallbacksAndMessages(null)
+        super.onDestroy()
     }
 
     // Start of Getting the Random Sentences

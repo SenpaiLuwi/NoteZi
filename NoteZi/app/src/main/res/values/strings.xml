@@ -1,5 +1,40 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">NoteZi</string>
 
-    <string name="splashtext">splashtext</string>
+    <!--Temporary Placeholders-->
+    <string name="User">User</string>
+    <string name="Email">Email</string>
+    <string name="schoolID">School ID</string>
+    <string name="Time">Nov 22 2023</string>
+    <string name="taskNumber">0</string>
+
+    <!--Main Placeholders (HOME PAGE)-->
+    <string name="Hello">Hello,</string>
+    <string name="YouHave">You have</string>
+    <string name="TasksToday">Tasks today</string>
+    <string name="Courses">Courses</string>
+    <string name="RunningSubs">Your Running Courses</string>
+    <string name="Schedule">Schedule</string>
+    <string name="ScheduleSubs">Your Upcoming Class Schedule</string>
+
+    <!--Main Placeholders (TASK PAGE)-->
+    <string name="Today">Today</string>
+    <string name="Search">Search</string>
+
+    <!--Main Placeholders (PROFILE PAGE)-->
+    <string name="SaveChanges">Save Changes</string>
+    <string name="ChooseFile">Choose File</string>
+    <string name="ProfilePicture">Profile Picture:</string>
+    <string name="UserName">User Name:</string>
+    <string name="UserEmail">Email:</string>
+    <string name="UserSchoolID">School ID:</string>
+
+    <string name="ProfilePictureText">Profile Picture</string>
+    <string name="UserNameText">User Name</string>
+    <string name="UserEmailText">Email</string>
+    <string name="UserSchoolIDText">School ID</string>
+
+
+
+
 </resources>

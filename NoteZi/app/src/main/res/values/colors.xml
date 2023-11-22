@@ -2,8 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="DarkBlueBG">#181d31</color>
-    <color name="TealColorBUTTONS">#52de97</color>
-    <color name="SemiWhiteColorTEXT">#F1E9E5</color>
+
+    <color name="blackColorBG">#131313</color>
+    <color name="whiteColorTEXT">#e8f9fd</color>
+    <color name="redColorBUTTONS">#FF1E00</color>
 
 </resources>
