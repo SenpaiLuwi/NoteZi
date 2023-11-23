@@ -1,9 +1,14 @@
 package com.example.notezi
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageButton
+
+
 
 class MainActivityTASK : AppCompatActivity() {
 
@@ -16,11 +21,13 @@ class MainActivityTASK : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_task)
 
+
         // Initialize the buttons
         homeBtn = findViewById(R.id.home_btn)
         taskBtn = findViewById(R.id.task_btn)
         schedBtn = findViewById(R.id.sched_btn)
         profileBtn = findViewById(R.id.profile_btn)
+
 
         homeBtn.setOnClickListener {
             startActivity(Intent(this, MainActivityHOME::class.java))
@@ -37,5 +44,8 @@ class MainActivityTASK : AppCompatActivity() {
         profileBtn.setOnClickListener {
             startActivity(Intent(this, MainActivityPROFILE::class.java))
         }
+
+
     }
+
 }
