@@ -1,6 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">NoteZi</string>
 
+
+    <!-- REMEMBER TO CHANGE THE VERSION -->
+    <string name="AppVersion">Application Version ⓘ0.4</string>
+
     <!--Temporary Placeholders-->
     <string name="User">User</string>
     <string name="Email">Email</string>
@@ -17,9 +21,22 @@
     <string name="Schedule">Schedule</string>
     <string name="ScheduleSubs">Your Upcoming Class Schedule</string>
 
-    <!--Main Placeholders (TASK PAGE)-->
+    <!--Main Placeholders (TASK/COURSE PAGE)-->
     <string name="Today">Today</string>
     <string name="Search">Search</string>
+
+    <string name="AddTaskName">Add A Task</string>
+    <string name="AddTask">Task Name</string>
+    <string name="TaskDeadline">Task Deadline</string>
+    <string name="TaskLink">Task Link</string>
+
+
+    <!--Main Placeholders (SCHEDULE PAGE)-->
+    <string name="AddSched">Add Schedule</string>
+    <string name="AddSchedName">Name of Subject</string>
+    <string name="ProfName">Name of Professor</string>
+    <string name="TimeSubj">Time of Subject</string>
+    <string name="LinkSubj">Subject Link</string>
 
     <!--Main Placeholders (PROFILE PAGE)-->
     <string name="SaveChanges">Save Changes</string>
@@ -34,7 +51,12 @@
     <string name="UserEmailText">Email</string>
     <string name="UserSchoolIDText">School ID</string>
 
+    <!--Main Placeholders (SETTINGS PAGE)-->
+    <string name="userSettings">User Settings</string>
+    <string name="EditUserProfile">Edit Profile</string>
+    <string name="SettingsVersion">Application Version</string>
+    <string name="SettingsAbout">About</string>
 
-
-
+    <!--Main Placeholders (SETTINGS PAGE)-->
+    <string name="AboutNoteZi">NoteZi is a Study Planner that is an app designed to help students organize their study schedules, set goals, and track their academic progress. Created by John Louie Ubias, Miguel Pilapil, and Rotsen David</string>
 </resources>

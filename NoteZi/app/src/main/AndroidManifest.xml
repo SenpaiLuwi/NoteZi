@@ -15,6 +15,18 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".SideApplicationVersion"
+            android:exported="false" />
+        <activity
+            android:name=".SideAbout"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityProfileEdit"
+            android:exported="false" />
+        <activity
+            android:name=".SideMainSettings"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityProfile"
             android:exported="false" />
         <activity
