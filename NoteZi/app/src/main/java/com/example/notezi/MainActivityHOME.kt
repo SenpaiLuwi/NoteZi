@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class MainActivity : AppCompatActivity() {
+class MainActivityHOME : AppCompatActivity() {
 
     private lateinit var homeBtn: View
     private lateinit var taskBtn: View
@@ -23,19 +23,19 @@ class MainActivity : AppCompatActivity() {
         profileBtn = findViewById(R.id.profile_btn)
 
         homeBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivityHOME::class.java))
         }
 
         taskBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityTask::class.java))
+            startActivity(Intent(this, MainActivityTASK::class.java))
         }
 
         schedBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivitySchedule::class.java))
+            startActivity(Intent(this, MainActivitySCHEDULE::class.java))
         }
 
         profileBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityProfile::class.java))
+            startActivity(Intent(this, MainActivityPROFILE::class.java))
         }
     }
 }

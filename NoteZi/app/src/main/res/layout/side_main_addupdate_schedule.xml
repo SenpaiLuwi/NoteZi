@@ -20,9 +20,6 @@
         android:textColor="#EEF5FF"
         android:textSize="20sp" />
 
-    <!-- CHARACTER NAME -->
-
-    <!-- CHARACTER NUMBER -->
 
     <TextView
         android:id="@+id/NameofSubj"
@@ -55,7 +52,7 @@
         tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize" />
 
     <TextView
-        android:id="@+id/charNumber"
+        android:id="@+id/NameofProf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/blackersansregular"
@@ -84,9 +81,9 @@
         android:textColorHint="@color/blackColorBG"
         tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
-    <!-- CHARACTER POWER -->
+
     <TextView
-        android:id="@+id/charPower"
+        android:id="@+id/TimeofSubj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/blackersansregular"
@@ -115,9 +112,9 @@
         android:textColorHint="@color/blackColorBG"
         tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize" />
 
-    <!-- CHARACTER IMGURL -->
+
     <TextView
-        android:id="@+id/charImg"
+        android:id="@+id/LinkofSubj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/blackersansregular"

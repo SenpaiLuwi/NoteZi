@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "724259522366",
+    "firebase_url": "https://notezi-a6caa-default-rtdb.firebaseio.com",
+    "project_id": "notezi-a6caa",
+    "storage_bucket": "notezi-a6caa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724259522366:android:3efab59073c3f328a54e6f",
+        "android_client_info": {
+          "package_name": "com.example.notezi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwbffVRzcCq248mcSrI5JpzNhM7BFXI10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

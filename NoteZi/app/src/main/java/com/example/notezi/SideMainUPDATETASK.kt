@@ -1,4 +1,4 @@
 package com.example.notezi
 
-class SideMainUpdateCourse {
+class SideMainUPDATETASK {
 }

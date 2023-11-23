@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 
-class MainActivityProfile : AppCompatActivity() {
+class MainActivityPROFILE : AppCompatActivity() {
 
     private lateinit var homeBtn: View
     private lateinit var taskBtn: View
@@ -26,23 +25,23 @@ class MainActivityProfile : AppCompatActivity() {
         settingsBtn = findViewById(R.id.settings_btn)
 
         homeBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivityHOME::class.java))
         }
 
         taskBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityTask::class.java))
+            startActivity(Intent(this, MainActivityTASK::class.java))
         }
 
         schedBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivitySchedule::class.java))
+            startActivity(Intent(this, MainActivitySCHEDULE::class.java))
         }
 
         profileBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityProfile::class.java))
+            startActivity(Intent(this, MainActivityPROFILE::class.java))
         }
 
         settingsBtn.setOnClickListener {
-            startActivity(Intent(this,SideMainSettings::class.java))
+            startActivity(Intent(this,SideMainSETTINGS::class.java))
         }
     }
 }

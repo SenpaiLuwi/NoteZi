@@ -10,7 +10,7 @@ import java.util.Date
 import java.util.Locale
 
 @Suppress("NAME_SHADOWING")
-class MainActivitySchedule : AppCompatActivity() {
+class MainActivitySCHEDULE : AppCompatActivity() {
 
     private lateinit var homeBtn: View
     private lateinit var taskBtn: View
@@ -34,11 +34,11 @@ class MainActivitySchedule : AppCompatActivity() {
         timeView.text = currentDate
 
         homeBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivityHOME::class.java))
         }
 
         taskBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityTask::class.java))
+            startActivity(Intent(this, MainActivityTASK::class.java))
         }
 
         schedBtn.setOnClickListener {
@@ -46,11 +46,11 @@ class MainActivitySchedule : AppCompatActivity() {
             val currentDate = getCurrentDate()
             timeView.text = currentDate
 
-            startActivity(Intent(this, MainActivitySchedule::class.java))
+            startActivity(Intent(this, MainActivitySCHEDULE::class.java))
         }
 
         profileBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityProfile::class.java))
+            startActivity(Intent(this, MainActivityPROFILE::class.java))
         }
     }
 

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 @Suppress("DEPRECATION")
 @SuppressLint("CustomSplashScreen")
-class MainSplashActivity : AppCompatActivity() {
+class MainSPLASHACTIVITY : AppCompatActivity() {
 
     // Variables Used
     private lateinit var progBar: ProgressBar
@@ -91,7 +91,7 @@ class MainSplashActivity : AppCompatActivity() {
         // Check internet connection
         if (isNetworkAvailable()) {
             // Intent to MainActivity
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityHOME::class.java)
             startActivity(intent)
             finish()
         } else {

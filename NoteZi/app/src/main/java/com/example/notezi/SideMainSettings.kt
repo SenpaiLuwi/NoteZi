@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 
-class SideMainSettings : AppCompatActivity() {
+class SideMainSETTINGS : AppCompatActivity() {
 
     private lateinit var editprofile: TextView
     private lateinit var settingabout: TextView
@@ -18,11 +18,11 @@ class SideMainSettings : AppCompatActivity() {
         settingabout = findViewById(R.id.settingabout_id)
 
         editprofile.setOnClickListener {
-            startActivity(Intent(this, MainActivityProfileEdit::class.java))
+            startActivity(Intent(this, MainActivityEDITPROFILE::class.java))
         }
 
         settingabout.setOnClickListener {
-            startActivity(Intent(this, SideAbout::class.java))
+            startActivity(Intent(this, SideABOUT::class.java))
         }
     }
 }

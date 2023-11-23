@@ -6,12 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/whiteColorTEXT"
     android:orientation="vertical"
-    tools:context=".SideMainUpdateCourse" >
+    tools:context=".SideMainUPDATETASK" >
 
-
-    <!-- CHARACTER NAME -->
-
-    <!-- CHARACTER NUMBER -->
 
     <TextView
         android:id="@+id/AddSceduleTxt"
