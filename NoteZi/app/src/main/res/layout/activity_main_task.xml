@@ -9,6 +9,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/Card_View_One"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         app:cardBackgroundColor="@color/blackColorBG"
@@ -119,6 +120,7 @@
         app:layout_constraintVertical_bias="0.653" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/Card_View_Two"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:cardBackgroundColor="@color/blackColorBG"
@@ -193,5 +195,31 @@
                 app:srcCompat="@drawable/redprofile"
                 tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Card_View_Three"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        app:cardBackgroundColor="@color/blackColorBG"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" >
+
+        <TextView
+            android:id="@+id/txt_sub_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="100dp"
+            android:text="SUBJECT"
+            android:textColor="#FFFFFF"
+            android:textSize="40dp"
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
