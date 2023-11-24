@@ -28,11 +28,11 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/task_course_id"
+                    android:id="@+id/sched_name_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/altonebold"
-                    android:text="@string/AddTaskCourse"
+                    android:text="@string/AddSchedName"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="25sp"
                     android:textStyle="bold"
@@ -44,11 +44,11 @@
                     app:layout_constraintVertical_bias="0.103" />
 
                 <TextView
-                    android:id="@+id/task_name_id"
+                    android:id="@+id/sched_prof_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/altonebold"
-                    android:text="@string/AddTask"
+                    android:text="@string/ProfName"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="25sp"
                     android:textStyle="bold"
@@ -60,11 +60,11 @@
                     app:layout_constraintVertical_bias="0.389" />
 
                 <TextView
-                    android:id="@+id/task_deadline_id"
+                    android:id="@+id/sched_time_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/altonebold"
-                    android:text="@string/TaskDeadline"
+                    android:text="@string/TimeSubj"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="25sp"
                     android:textStyle="bold"
@@ -75,11 +75,11 @@
                     app:layout_constraintVertical_bias="0.649" />
 
                 <TextView
-                    android:id="@+id/task_link_id"
+                    android:id="@+id/sched_link_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/altonebold"
-                    android:text="@string/TaskLink"
+                    android:text="@string/LinkSubj"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="25sp"
                     android:textStyle="bold"

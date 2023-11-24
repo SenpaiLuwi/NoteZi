@@ -63,18 +63,15 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
         app:cardBackgroundColor="@color/blackColorBG"
-        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" >
+        app:layout_constraintVertical_bias="0.15">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -84,33 +81,30 @@
                 android:id="@+id/editprofile_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/EditUserProfile"
+                android:fontFamily="@font/blackersansbold"
                 android:gravity="center"
+                android:text="@string/EditUserProfile"
                 android:textColor="@color/redColorBUTTONS"
                 android:textSize="20sp"
-                android:fontFamily="@font/blackersansbold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
         app:cardBackgroundColor="@color/blackColorBG"
-        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" >
+        app:layout_constraintVertical_bias="0.3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -120,11 +114,11 @@
                 android:id="@+id/settingabout_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/SettingsAbout"
+                android:fontFamily="@font/blackersansbold"
                 android:gravity="center"
+                android:text="@string/SettingsAbout"
                 android:textColor="@color/redColorBUTTONS"
                 android:textSize="20sp"
-                android:fontFamily="@font/blackersansbold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

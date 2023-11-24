@@ -41,7 +41,7 @@
         android:layout_marginEnd="30dp"
         android:backgroundTint="#22092C"
         android:ems="10"
-        android:fontFamily="@font/blackersansregular"
+        android:fontFamily="@font/asapcondensedsemibold"
         android:hint="@string/AddSchedName"
         android:importantForAutofill="no"
         android:inputType="text"
@@ -63,6 +63,7 @@
         android:textColor="@color/blackColorBG"
         android:textSize="15sp" />
 
+
     <EditText
         android:id="@+id/edit_subj_prof"
         android:layout_width="match_parent"
@@ -71,7 +72,7 @@
         android:layout_marginEnd="30dp"
         android:backgroundTint="#22092C"
         android:ems="10"
-        android:fontFamily="@font/blackersansregular"
+        android:fontFamily="@font/asapcondensedsemibold"
         android:hint="@string/ProfName"
         android:importantForAutofill="no"
         android:inputType="text"
@@ -80,7 +81,6 @@
         android:textColor="@color/blackColorBG"
         android:textColorHint="@color/blackColorBG"
         tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
-
 
     <TextView
         android:id="@+id/TimeofSubj"
@@ -102,7 +102,7 @@
         android:layout_marginEnd="30dp"
         android:backgroundTint="#22092C"
         android:ems="10"
-        android:fontFamily="@font/blackersansregular"
+        android:fontFamily="@font/asapcondensedsemibold"
         android:hint="@string/TimeSubj"
         android:importantForAutofill="no"
         android:inputType="text"
@@ -133,7 +133,7 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="#22092C"
         android:ems="10"
-        android:fontFamily="@font/blackersansregular"
+        android:fontFamily="@font/asapcondensedsemibold"
         android:hint="@string/LinkSubj"
         android:importantForAutofill="no"
         android:inputType="text"

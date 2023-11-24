@@ -1,21 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">NoteZi</string>
 
-
     <!-- REMEMBER TO CHANGE THE VERSION -->
-    <string name="AppVersion">Application Version ⓘ0.5</string>
+    <string name="AppVersion">Application Version ⓘ 0.7</string>
 
     <!--Temporary Placeholders-->
     <string name="User">User</string>
     <string name="Email">Email</string>
     <string name="schoolID">School ID</string>
     <string name="Time">Nov 22 2023</string>
-    <string name="taskNumber">0</string>
+    <string name="taskNumber">100</string>
 
     <!--Main Placeholders (HOME PAGE)-->
     <string name="Hello">Hello,</string>
     <string name="YouHave">You have</string>
-    <string name="TasksToday">Tasks today</string>
+    <string name="TasksToday">Tasks Today</string>
     <string name="Courses">Courses</string>
     <string name="RunningSubs">Your Running Courses</string>
     <string name="Schedule">Schedule</string>
@@ -26,6 +25,7 @@
     <string name="Search">Search</string>
 
     <string name="AddTaskName">Add A Task</string>
+    <string name="AddTaskCourse">Course Name</string>
     <string name="AddTask">Task Name</string>
     <string name="TaskDeadline">Task Deadline</string>
     <string name="TaskLink">Task Link</string>

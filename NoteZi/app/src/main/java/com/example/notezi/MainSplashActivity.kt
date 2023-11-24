@@ -44,10 +44,10 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
         // Start changing text every 3 seconds
         startTextChange()
 
-        // Loading delay of 10 secs
+        // Loading delay of 15 secs
         Handler().postDelayed({
             checkInternetAndNavigate()
-        }, 5000)
+        }, 15000)
     }
 
     // Start changing text every 3 seconds

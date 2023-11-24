@@ -27,32 +27,92 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/TASKCOURSENAME"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/blackersansregular"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:text="@string/AddTaskCourse"
+        android:textColor="@color/blackColorBG"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095" />
+
+    <EditText
+        android:id="@+id/edit_task_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/redColorBUTTONS"
+        android:ems="10"
+        android:fontFamily="@font/asapcondensedmedium"
+        android:hint="@string/AddTaskCourse"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:textColor="@color/redColorBUTTONS"
+        android:textColorHint="#D50000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157"
+        tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize" />
+
+    <TextView
+        android:id="@+id/TASKNAME"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/blackersansregular"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:text="@string/AddTask"
+        android:textColor="@color/blackColorBG"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.239" />
+
     <EditText
         android:id="@+id/edit_task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="#22092C"
+        android:backgroundTint="@color/redColorBUTTONS"
         android:ems="10"
-        android:fontFamily="@font/blackersansregular"
+        android:fontFamily="@font/asapcondensedmedium"
         android:hint="@string/AddTask"
         android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="10dp"
-        android:textColor="@color/blackColorBG"
-        android:textColorHint="@color/blackColorBG"
+        android:textColor="@color/redColorBUTTONS"
+        android:textColorHint="#D50000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145"
+        app:layout_constraintVertical_bias="0.304"
         tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize" />
 
     <TextView
-        android:id="@+id/charNumber"
+        android:id="@+id/TASKDEADLINE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/blackersansregular"
@@ -67,7 +127,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintVertical_bias="0.388" />
 
     <EditText
         android:id="@+id/edit_task_deadline"
@@ -75,26 +135,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="#22092C"
+        android:backgroundTint="@color/redColorBUTTONS"
         android:ems="10"
-        android:fontFamily="@font/blackersansregular"
+        android:fontFamily="@font/asapcondensedmedium"
         android:hint="@string/TaskDeadline"
         android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="10dp"
-        android:textColor="@color/blackColorBG"
-        android:textColorHint="@color/blackColorBG"
+        android:textColor="@color/redColorBUTTONS"
+        android:textColorHint="@color/redColorBUTTONS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.296"
-        tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
+        app:layout_constraintVertical_bias="0.454"
+        tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
 
     <TextView
-        android:id="@+id/charPower"
+        android:id="@+id/SUBJECTLINK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/blackersansregular"
@@ -109,7 +169,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintVertical_bias="0.524" />
 
     <EditText
         android:id="@+id/edit_task_link"
@@ -117,23 +177,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="#22092C"
+        android:backgroundTint="@color/redColorBUTTONS"
         android:ems="10"
-        android:fontFamily="@font/blackersansregular"
+        android:fontFamily="@font/asapcondensedmedium"
         android:hint="@string/TaskLink"
         android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="10dp"
-        android:textColor="@color/blackColorBG"
-        android:textColorHint="@color/blackColorBG"
+        android:textColor="@color/redColorBUTTONS"
+        android:textColorHint="#D50000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436"
-        tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize" />
+        app:layout_constraintVertical_bias="0.595"
+        tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
 
     <Button
         android:id="@+id/btn_id_update"
@@ -150,29 +210,11 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572"
-        tools:ignore="VisualLintButtonSize" />
-
-    <TextView
-        android:id="@+id/NameofSubj"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/blackersansregular"
-        android:gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="5dp"
-        android:text="@string/AddTask"
-        android:textColor="@color/blackColorBG"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.733"
+        tools:ignore="VisualLintButtonSize" />
 
     <!-- CHARACTER POWER -->
 
