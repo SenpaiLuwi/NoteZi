@@ -37,6 +37,9 @@
             android:name=".MainActivityHOME"
             android:exported="false" />
         <activity
+            android:name=".SideMainUPDATETASK"
+            android:exported="false"/>
+        <activity
             android:name=".MainSPLASHACTIVITY"
             android:exported="true">
             <intent-filter>

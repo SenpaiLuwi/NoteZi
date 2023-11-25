@@ -151,7 +151,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         // DIALOG PLUS POP UP
         val dialogPlus = DialogPlus.newDialog(this)
             .setContentHolder(com.orhanobut.dialogplus.ViewHolder(R.layout.side_main_update_schedule))
-            .setExpanded(true, 1100)
+            .setExpanded(true, 1400)
             .create()
 
         // INITIALIZE OF THE FUNCTIONS
@@ -342,7 +342,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
                     showAppChooserDialog(link)
                 }
             }
-                // IF THE USER CLICKS NO CLOSES THE DIALOG BOX
+            // IF THE USER CLICKS NO CLOSES THE DIALOG BOX
             .setNegativeButton("No") { dialog, _ ->
                 dialog.dismiss()
             }
@@ -359,7 +359,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
                     1 -> openLinkInApp(link, "com.android.chrome") // OPENS openLinkInApp OR GOOGLE CHROME
                 }
             }
-                // CLOSES THE DIALOG BOX
+            // CLOSES THE DIALOG BOX
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }
@@ -376,7 +376,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         // IF THE intent IS NOT NULL
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
-        // IF THE APP IS NOT INSTALLED
+            // IF THE APP IS NOT INSTALLED
         } else {
             Toast.makeText(this, "App not installed", Toast.LENGTH_SHORT).show()
         }
@@ -394,7 +394,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         // IF THE intent IS NOT NULL
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
-        // IF THE APP IS NOT INSTALLED
+            // IF THE APP IS NOT INSTALLED
         } else {
             Toast.makeText(this, "Google Meet app not installed", Toast.LENGTH_SHORT).show()
         }
