@@ -9,6 +9,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         app:cardBackgroundColor="@color/blackColorBG"
@@ -27,10 +28,10 @@
                 android:id="@+id/time_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/asapcondensedextrabold"
                 android:text="@string/Time"
                 android:textColor="@color/redColorBUTTONS"
                 android:textSize="20sp"
-                android:fontFamily="@font/asapcondensedextrabold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.092"
@@ -39,13 +40,13 @@
                 app:layout_constraintVertical_bias="0.1" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/dayName_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/asapcondensedextrabold"
                 android:text="@string/Today"
                 android:textColor="@color/whiteColorTEXT"
                 android:textSize="30sp"
-                android:fontFamily="@font/asapcondensedextrabold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.09"
@@ -104,18 +105,8 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mainSched_id"
-        android:layout_width="match_parent"
-        android:layout_height="460dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
-
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:cardBackgroundColor="@color/blackColorBG"
@@ -191,4 +182,12 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainSched_id"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

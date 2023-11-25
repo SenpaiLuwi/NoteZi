@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="40dp"
-    android:elevation="15dp"
+    app:cardCornerRadius="20dp"
+    android:elevation="10dp"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/blackColorBG">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:padding="10dp"
         >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:cardCornerRadius="50dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="20dp"
             app:cardBackgroundColor="@color/redColorBUTTONS"
             tools:ignore="TextSizeCheck">
 
@@ -31,11 +32,12 @@
                     android:id="@+id/sched_name_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/altonebold"
+                    android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/AddSchedName"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="25sp"
+                    android:textSize="23sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -47,47 +49,66 @@
                     android:id="@+id/sched_prof_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/altonebold"
+                    android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/ProfName"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.389" />
+                    app:layout_constraintVertical_bias="0.40" />
 
                 <TextView
                     android:id="@+id/sched_time_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/altonebold"
+                    android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/TimeSubj"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.649" />
+                    app:layout_constraintVertical_bias="0.60" />
+
+                <TextView
+                    android:id="@+id/sched_day_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/asapcondensedmedium"
+                    android:text="@string/DaySubj"
+                    android:textColor="@color/whiteColorTEXT"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.77" />
 
                 <TextView
                     android:id="@+id/sched_link_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/altonebold"
+                    android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/LinkSubj"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.896" />
+                    app:layout_constraintVertical_bias="0.95" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

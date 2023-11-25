@@ -2,7 +2,7 @@
     <string name="app_name">NoteZi</string>
 
     <!-- REMEMBER TO CHANGE THE VERSION -->
-    <string name="AppVersion">Application Version ⓘ 0.7</string>
+    <string name="AppVersion">Application Version ⓘ 0.8</string>
 
     <!--Temporary Placeholders-->
     <string name="User">User</string>
@@ -36,6 +36,7 @@
     <string name="AddSchedName">Name of Subject</string>
     <string name="ProfName">Name of Professor</string>
     <string name="TimeSubj">Time of Subject</string>
+    <string name="DaySubj">Day of Subject</string>
     <string name="LinkSubj">Subject Link</string>
 
     <!--Main Placeholders (PROFILE PAGE)-->

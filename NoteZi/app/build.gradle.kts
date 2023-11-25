@@ -44,6 +44,8 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-database:8.0.2")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.orhanobut:dialogplus:1.11@aar")
+
 
 
     implementation("androidx.core:core-ktx:1.12.0")

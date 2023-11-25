@@ -25,19 +25,27 @@ class MainActivityPROFILE : AppCompatActivity() {
         settingsBtn = findViewById(R.id.settings_btn)
 
         homeBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityHOME::class.java))
+            val myIntent = Intent(this, MainActivityHOME::class.java)
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(myIntent)
         }
 
         taskBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityTASK::class.java))
+            val myIntent = Intent(this, MainActivityTASK::class.java)
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(myIntent)
         }
 
         schedBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivitySCHEDULE::class.java))
+            val myIntent = Intent(this, MainActivitySCHEDULE::class.java)
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(myIntent)
         }
 
         profileBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivityPROFILE::class.java))
+            val myIntent = Intent(this, MainActivityPROFILE::class.java)
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(myIntent)
         }
 
         settingsBtn.setOnClickListener {

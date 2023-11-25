@@ -112,6 +112,35 @@
         android:textColorHint="@color/blackColorBG"
         tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize" />
 
+    <TextView
+        android:id="@+id/DayofSubj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/blackersansregular"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:text="@string/DaySubj"
+        android:textColor="@color/blackColorBG"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/edit_subj_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#22092C"
+        android:ems="10"
+        android:fontFamily="@font/asapcondensedsemibold"
+        android:hint="@string/DaySubj"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:textColor="@color/blackColorBG"
+        android:textColorHint="@color/blackColorBG"
+        tools:ignore="DuplicateSpeakableTextCheck,RtlSymmetry,VisualLintTextFieldSize" />
 
     <TextView
         android:id="@+id/LinkofSubj"
