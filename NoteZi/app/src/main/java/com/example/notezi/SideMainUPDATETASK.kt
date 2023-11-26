@@ -41,7 +41,7 @@ class SideMainUPDATETASK : AppCompatActivity() {
 
         if (course.isNotEmpty() && task.isNotEmpty() && deadline.isNotEmpty() && link.isNotEmpty()) {
             // SAVE DATA TO FIREBASE
-            val taskRef = FirebaseDatabase.getInstance().reference.child("notezi").child("tasks").push()
+            val taskRef = FirebaseDatabase.getInstance().reference.child("notezi").push()
             val taskModel = TaskModel(course, task, deadline, link)
             taskRef.setValue(taskModel)
 
