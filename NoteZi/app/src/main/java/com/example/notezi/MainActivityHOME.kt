@@ -11,6 +11,7 @@ import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.PriorityQueue
 
 class MainActivityHOME : AppCompatActivity() {
 
@@ -25,6 +26,9 @@ class MainActivityHOME : AppCompatActivity() {
     private lateinit var schedTime: TextView
     private lateinit var schedDay: TextView
     private lateinit var schedLink: TextView
+
+    // Use a PriorityQueue to keep track of schedules based on time
+    private val scheduleQueue: PriorityQueue<ScheduleModel> = PriorityQueue(compareBy { it.subjTime })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,34 +75,28 @@ class MainActivityHOME : AppCompatActivity() {
         fetchNearestSchedule()
     }
 
-    //MAY ERROR PA TOH FROM 74-153
     private fun fetchNearestSchedule() {
         val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().reference.child("notezi")
-
-        // Get the current day
         val currentDay = getCurrentDay()
-
-        // Get the current time
         val currentTime = getCurrentTime()
 
-        // Query to find the nearest schedule based on the current day and time
-        val query: Query = databaseReference.orderByChild("subjDay").equalTo(currentDay).limitToFirst(1)
+        val query: Query = databaseReference.orderByChild("subjDay").equalTo(currentDay)
 
-        query.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot.children.forEach { scheduleSnapshot ->
-                    val scheduleModel = scheduleSnapshot.getValue(ScheduleModel::class.java)
+        query.addChildEventListener(object : ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                updateNearestSchedule(snapshot, currentTime)
+            }
 
-                    // Check if the schedule's time is later than the current time
-                    if (scheduleModel != null && scheduleModel.subjTime?.compareTo(currentTime)!! > 0) {
-                        // Display the nearest schedule
-                        displaySchedule(scheduleModel)
-                        return
-                    }
-                }
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                updateNearestSchedule(snapshot, currentTime)
+            }
 
-                // If no schedule found for today or with a later time, display a message
-                displayNoScheduleMessage()
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                updateNearestSchedule(snapshot, currentTime) // Check for the next nearest schedule
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                // Handle movement if needed
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -108,22 +106,37 @@ class MainActivityHOME : AppCompatActivity() {
     }
 
 
+    private fun updateNearestSchedule(snapshot: DataSnapshot, currentTime: String) {
+        val scheduleModel = snapshot.getValue(ScheduleModel::class.java)
+
+        if (scheduleModel != null) {
+            scheduleQueue.add(scheduleModel)
+
+            // Check if the schedule is upcoming based on the user's phone time
+            if (currentTime >= scheduleModel.subjTime) {
+                displaySchedule(scheduleModel)
+            } else {
+                // If the current time is after the schedule's end time, check for the next schedule
+                scheduleQueue.remove(scheduleModel)
+                if (!scheduleQueue.isEmpty()) {
+                    scheduleQueue.peek()?.let { displaySchedule(it) }
+                } else {
+                    // Clear the TextViews when there are no more upcoming schedules
+                    clearTextViews()
+                }
+            }
+        } else {
+            // Clear the TextViews when no schedule is found
+            clearTextViews()
+        }
+    }
+
     private fun displaySchedule(scheduleModel: ScheduleModel) {
         schedName.text = scheduleModel.subjName
         schedProf.text = scheduleModel.subjProf
         schedTime.text = scheduleModel.subjTime
         schedDay.text = scheduleModel.subjDay
         schedLink.text = scheduleModel.subjLink
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun displayNoScheduleMessage() {
-        // Display a message indicating no upcoming schedule for today
-        schedName.text = "NO SCHEDULE FOR TODAY!"
-        schedProf.text = "⊹⋛⋋( ՞ਊ ՞)⋌⋚⊹"
-        schedTime.text = "(づ ◕‿◕ )づ"
-        schedDay.text = "( ˘▽˘)っ♨"
-        schedLink.text = "( ͡° ͜ʖ ͡° )"
     }
 
     private fun getCurrentDay(): String {
@@ -148,5 +161,14 @@ class MainActivityHOME : AppCompatActivity() {
 
         // Get the current time in 12-hour format
         return dateFormat.format(calendar.time)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun clearTextViews() {
+        schedName.text = "NO SCHEDULE FOR TODAY!"
+        schedProf.text = "⊹⋛⋋( ՞ਊ ՞)⋌⋚⊹"
+        schedTime.text = "(づ ◕‿◕ )づ"
+        schedDay.text = "( ˘▽˘)っ♨"
+        schedLink.text = "( ͡° ͜ʖ ͡° )"
     }
 }

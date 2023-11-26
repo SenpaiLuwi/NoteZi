@@ -75,10 +75,13 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
                     "Checking the Internet Connection",
                     "Gathering Data from FireBase",
                     "Checking if Louie is Handsome",
+                    "Asking Rotsen if he is OK?",
+                    "Waking up Miguel",
                     "Fixing the Bugs",
                     "Making the App Pretty",
                     "Optimizing the Notes",
-                    "Sit Tight"
+                    "Sit Tight",
+
                 )
             )
         }

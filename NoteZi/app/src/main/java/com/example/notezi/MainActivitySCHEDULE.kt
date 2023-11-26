@@ -337,7 +337,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
             .setMessage("Do you want to go to the link?")
             // IF THE USER CLICKS YES
             .setPositiveButton("Yes") { _, _ ->
-                if (!link.isNullOrBlank()) {
+                if (link.isNotBlank()) {
                     // CALLING OF showAppChooserDialog
                     showAppChooserDialog(link)
                 }

@@ -2,7 +2,7 @@
     <string name="app_name">NoteZi</string>
 
     <!-- REMEMBER TO CHANGE THE VERSION -->
-    <string name="AppVersion">Application Version ⓘ 0.8</string>
+    <string name="AppVersion">Application Version ⓘ 0.23</string>
 
     <!--Temporary Placeholders-->
     <string name="User">User</string>
@@ -19,6 +19,16 @@
     <string name="RunningSubs">Your Running Courses</string>
     <string name="Schedule">Schedule</string>
     <string name="ScheduleSubs">Your Upcoming Class Schedule</string>
+
+    <string name="NoSchedName">NO SCHEDULE FOR TODAY!</string>
+    <string name="NoSchedProf">⊹⋛⋋( ՞ਊ ՞)⋌⋚⊹</string>
+    <string name="NoSchedTime">(づ ◕‿◕ )づ</string>
+    <string name="NoSchedDay">( ˘▽˘)っ♨</string>
+    <string name="NoSchedLink">( ͡° ͜ʖ ͡° )</string>
+
+
+
+
 
     <!--Main Placeholders (TASK/COURSE PAGE)-->
     <string name="Today">Today</string>
