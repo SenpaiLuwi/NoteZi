@@ -24,10 +24,12 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
         "Checking the Internet Connection",
         "Gathering Data from FireBase",
         "Checking if Louie is Handsome",
+        "Asking Rotsen if he is OK?",
+        "Waking up Miguel",
         "Fixing the Bugs",
         "Making the App Pretty",
         "Optimizing the Notes",
-        "Sit Tight"
+        "Sit Tight",
     )
 
     private val textChangeHandler = Handler()
@@ -44,10 +46,10 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
         // Start changing text every 3 seconds
         startTextChange()
 
-        // Loading delay of 15 secs
+        // Loading delay of 10 secs
         Handler().postDelayed({
             checkInternetAndNavigate()
-        }, 15000)
+        }, 10000)
     }
 
     // Start changing text every 3 seconds
@@ -57,7 +59,7 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
                 splashText.text = getRandomSentence()
                 textChangeHandler.postDelayed(this, 3000)
             }
-        }, 3000)
+        }, 2500)
     }
 
     // Stop changing text when the activity is destroyed
@@ -94,7 +96,7 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
         // Check internet connection
         if (isNetworkAvailable()) {
             // Intent to MainActivity
-            val intent = Intent(this, MainActivityHOME::class.java)
+            val intent = Intent(this, MainActivityTASK::class.java)
             startActivity(intent)
             finish()
         } else {

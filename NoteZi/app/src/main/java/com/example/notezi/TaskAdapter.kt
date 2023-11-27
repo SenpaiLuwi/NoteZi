@@ -8,19 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
-class TaskAdapter(options: FirebaseRecyclerOptions<TaskModel>) :
-    FirebaseRecyclerAdapter<TaskModel, TaskAdapter.MyViewHolder>(options) {
+class TaskAdapter(task: FirebaseRecyclerOptions<TaskModel>) :
+    FirebaseRecyclerAdapter<TaskModel, TaskAdapter.MyViewHolder>(task) {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int, model: TaskModel) {
-        holder.courseName.text = model.course
-        holder.taskName.text = model.task
-        holder.deadline.text = model.deadline
-        holder.link.text = model.link
+        holder.courseName.text = model.taskCourse
+        holder.taskName.text = model.taskName
+        holder.deadline.text = model.taskDeadline
+        holder.link.text = model.taskLink
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.side_main_task_list, parent, false) // Replace with the appropriate layout
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.side_main_task_list, parent, false) // Replace with the appropriate layout
         return MyViewHolder(view)
     }
 

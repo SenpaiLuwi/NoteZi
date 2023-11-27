@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.SearchView
 
 class MainActivityTASK : AppCompatActivity() {
 
-    private lateinit var homeBtn: View
     private lateinit var taskBtn: View
     private lateinit var schedBtn: View
     private lateinit var profileBtn: View
     private lateinit var addBtn: ImageView
+
+    //DAGDAG KO:
+    private lateinit var mainAdapter: TaskAdapter
+    private lateinit var searchTask: SearchView
+    private lateinit var filerTask: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +25,7 @@ class MainActivityTASK : AppCompatActivity() {
 
 
         // Initialize the buttons
-        homeBtn = findViewById(R.id.home_btn)
+
         taskBtn = findViewById(R.id.task_btn)
         schedBtn = findViewById(R.id.sched_btn)
         profileBtn = findViewById(R.id.profile_btn)
@@ -30,13 +35,6 @@ class MainActivityTASK : AppCompatActivity() {
 
         addBtn.setOnClickListener{
             val myIntent = Intent(this, SideMainUPDATETASK::class.java)
-            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(myIntent)
-        }
-
-
-        homeBtn.setOnClickListener {
-            val myIntent = Intent(this, MainActivityHOME::class.java)
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(myIntent)
         }

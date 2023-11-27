@@ -34,9 +34,6 @@
             android:name=".MainActivityTASK"
             android:exported="false" />
         <activity
-            android:name=".MainActivityHOME"
-            android:exported="false" />
-        <activity
             android:name=".SideMainUPDATETASK"
             android:exported="false"/>
         <activity

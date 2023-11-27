@@ -7,7 +7,6 @@ import android.view.View
 
 class MainActivityPROFILE : AppCompatActivity() {
 
-    private lateinit var homeBtn: View
     private lateinit var taskBtn: View
     private lateinit var schedBtn: View
     private lateinit var profileBtn: View
@@ -18,17 +17,12 @@ class MainActivityPROFILE : AppCompatActivity() {
         setContentView(R.layout.activity_main_profile)
 
         // Initialize the buttons
-        homeBtn = findViewById(R.id.home_btn)
+
         taskBtn = findViewById(R.id.task_btn)
         schedBtn = findViewById(R.id.sched_btn)
         profileBtn = findViewById(R.id.profile_btn)
         settingsBtn = findViewById(R.id.settings_btn)
 
-        homeBtn.setOnClickListener {
-            val myIntent = Intent(this, MainActivityHOME::class.java)
-            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(myIntent)
-        }
 
         taskBtn.setOnClickListener {
             val myIntent = Intent(this, MainActivityTASK::class.java)

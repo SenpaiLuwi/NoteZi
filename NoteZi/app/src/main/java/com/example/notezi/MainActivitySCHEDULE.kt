@@ -23,7 +23,7 @@ import java.util.Locale
 class MainActivitySCHEDULE : AppCompatActivity() {
 
     // Views, TextViews, RecyclerView, ImageButton, SearchView, and ScheduleAdapter
-    private lateinit var homeBtn: View
+
     private lateinit var taskBtn: View
     private lateinit var schedBtn: View
     private lateinit var profileBtn: View
@@ -40,7 +40,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         setContentView(R.layout.activity_main_schedule)
 
         // INITIALIZE OF THE FUNCTIONS
-        homeBtn = findViewById(R.id.home_btn)
+
         taskBtn = findViewById(R.id.task_btn)
         schedBtn = findViewById(R.id.sched_btn)
         profileBtn = findViewById(R.id.profile_btn)
@@ -53,11 +53,11 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         // LINEARLAYOUT MANAGER
         mainSched.layoutManager = LinearLayoutManager(this)
 
-        // FIREBASE RECYCLER OPTIONS PARAMETERED BY "ScheduleModel". SetQuery Meaning Fetching Data to the Database from "notezi".
+        // FIREBASE RECYCLER OPTIONS PARAMETERED BY "ScheduleModel". SetQuery Meaning Fetching Data to the Database from "schedule".
         // ScheduleModel is the Adapter and the Getters and Setters for the Code.
         val options: FirebaseRecyclerOptions<ScheduleModel> =
             FirebaseRecyclerOptions.Builder<ScheduleModel>()
-                .setQuery(FirebaseDatabase.getInstance().reference.child("notezi"), ScheduleModel::class.java)
+                .setQuery(FirebaseDatabase.getInstance().reference.child("schedule"), ScheduleModel::class.java)
                 .build()
 
         // Getting the CurrentDate of the users Phone
@@ -79,13 +79,6 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         addButton.setOnClickListener {
             // Calling the showUpdateDialog
             showUpdateDialog()
-        }
-
-        // Home Button
-        homeBtn.setOnClickListener {
-            val myIntent = Intent(this, MainActivityHOME::class.java)
-            myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(myIntent)
         }
 
         // Task Button
@@ -151,7 +144,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         // DIALOG PLUS POP UP
         val dialogPlus = DialogPlus.newDialog(this)
             .setContentHolder(com.orhanobut.dialogplus.ViewHolder(R.layout.side_main_update_schedule))
-            .setExpanded(true, 1400)
+            .setExpanded(true, 1150)
             .create()
 
         // INITIALIZE OF THE FUNCTIONS
@@ -182,7 +175,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
                 validateMsg("Course Link", this)
             } else {
                 // SAVING IT TO THE DATABASE
-                val scheduleRef = FirebaseDatabase.getInstance().reference.child("notezi").push()
+                val scheduleRef = FirebaseDatabase.getInstance().reference.child("schedule").push()
                 val scheduleModel = ScheduleModel(subjName, subjProf, subjTime, subjDay, subjLink)
                 scheduleRef.setValue(scheduleModel)
 
@@ -256,7 +249,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         // IF THE ITEMS INSIDE THE ITEMID IS NOT NULL THEN IT WILL SAVE TO THE DATABASE
         if (itemId != null) {
             val updatedItem = ScheduleModel(newName, newProf, newTime, newDay, newLink)
-            FirebaseDatabase.getInstance().reference.child("notezi").child(itemId).setValue(updatedItem)
+            FirebaseDatabase.getInstance().reference.child("schedule").child(itemId).setValue(updatedItem)
         }
     }
 
@@ -282,7 +275,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
     private fun deleteItem(position: Int) {
         val itemId = mainAdapter.getRef(position).key
         if (itemId != null) {
-            FirebaseDatabase.getInstance().reference.child("notezi").child(itemId).removeValue()
+            FirebaseDatabase.getInstance().reference.child("schedule").child(itemId).removeValue()
         }
     }
 
@@ -403,7 +396,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
     // START OF SEARCHING THE ITEMS ON THE LIST
     private fun txtSearch(str:String?){
         val options: FirebaseRecyclerOptions<ScheduleModel> = FirebaseRecyclerOptions.Builder<ScheduleModel>()
-            .setQuery(FirebaseDatabase.getInstance().reference.child("notezi").orderByChild("subjName").startAt(str).endAt("$str~"), ScheduleModel::class.java)
+            .setQuery(FirebaseDatabase.getInstance().reference.child("schedule").orderByChild("subjName").startAt(str).endAt("$str~"), ScheduleModel::class.java)
             .build()
 
         mainAdapter = ScheduleAdapter(options)

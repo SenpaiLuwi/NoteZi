@@ -1,8 +1,9 @@
 package com.example.notezi
 
+// INAYOS KO FILE NAMING
 data class TaskModel(
-    val course: String = "",
-    val task: String = "",
-    val deadline: String = "",
-    val link: String = ""
+    val taskCourse: String = "",
+    val taskName: String = "",
+    val taskDeadline: String = "",
+    val taskLink: String = ""
 )

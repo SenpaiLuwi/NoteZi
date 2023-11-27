@@ -5,5 +5,5 @@ data class ScheduleModel(
     val subjProf: String = "",
     val subjTime: String = "",
     val subjDay: String = "",
-    val subjLink: String = "",
+    val subjLink: String = ""
 )
