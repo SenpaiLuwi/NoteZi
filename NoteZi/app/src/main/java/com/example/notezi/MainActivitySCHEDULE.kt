@@ -15,15 +15,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import com.orhanobut.dialogplus.DialogPlus
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
-
+import java.util.*
 @Suppress("NAME_SHADOWING")
 class MainActivitySCHEDULE : AppCompatActivity() {
 
     // Views, TextViews, RecyclerView, ImageButton, SearchView, and ScheduleAdapter
-
     private lateinit var taskBtn: View
     private lateinit var schedBtn: View
     private lateinit var profileBtn: View
@@ -33,6 +29,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
     private lateinit var addButton: ImageButton
     private lateinit var searchSched: SearchView
     private lateinit var mainAdapter: ScheduleAdapter
+
 
     // START OF ONCREATE
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -302,23 +299,6 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         return dateFormat.format(currentDate)
     }
 
-    // START OF GETTING THE CURRENT DAY ON LOCAL PHONE
-    private fun getCurrentDay(): String {
-        val calendar = Calendar.getInstance()
-
-        // CONVERT DAY OF THE WEEK TO A READABLE FORMAT
-        return when (calendar.get(Calendar.DAY_OF_WEEK)) {
-            Calendar.SUNDAY -> "Sunday"
-            Calendar.MONDAY -> "Monday"
-            Calendar.TUESDAY -> "Tuesday"
-            Calendar.WEDNESDAY -> "Wednesday"
-            Calendar.THURSDAY -> "Thursday"
-            Calendar.FRIDAY -> "Friday"
-            Calendar.SATURDAY -> "Saturday"
-            else -> ""
-        }
-    }
-
     // START OF showLinkConfirmationDialog "THIS ONLY OCCURS WHEN THE CARD VIEW IS CLICKED"
     private fun showLinkConfirmationDialog(position: Int) {
         val currentItem = mainAdapter.getItem(position)
@@ -402,6 +382,24 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         mainAdapter = ScheduleAdapter(options)
         mainAdapter.startListening()
         mainSched.adapter = mainAdapter
+    }
+
+
+    // START OF GETTING THE CURRENT DAY ON LOCAL PHONE
+    private fun getCurrentDay(): String {
+        val calendar = Calendar.getInstance()
+
+        // CONVERT DAY OF THE WEEK TO A READABLE FORMAT
+        return when (calendar.get(Calendar.DAY_OF_WEEK)) {
+            Calendar.SUNDAY -> "Sunday"
+            Calendar.MONDAY -> "Monday"
+            Calendar.TUESDAY -> "Tuesday"
+            Calendar.WEDNESDAY -> "Wednesday"
+            Calendar.THURSDAY -> "Thursday"
+            Calendar.FRIDAY -> "Friday"
+            Calendar.SATURDAY -> "Saturday"
+            else -> ""
+        }
     }
 
     // VALIDATION OF THE USER INPUT

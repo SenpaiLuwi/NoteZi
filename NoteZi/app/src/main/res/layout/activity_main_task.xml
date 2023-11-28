@@ -81,26 +81,11 @@
                         android:background="#80000000"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5" />
+                        app:layout_constraintVertical_bias="0.0" />
 
-                    <ImageButton
-                        android:id="@+id/task_item_sort"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:backgroundTint="#00FFFFFF"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/sorting"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5"
-                        tools:ignore="ContentDescription,HardcodedText,TouchTargetSizeCheck"
-                        android:contentDescription="TODO" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

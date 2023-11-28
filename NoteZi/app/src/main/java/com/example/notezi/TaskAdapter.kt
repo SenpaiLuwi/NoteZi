@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
+@Suppress("DEPRECATION")
 class TaskAdapter(options: FirebaseRecyclerOptions<TaskModel>) :
     FirebaseRecyclerAdapter<TaskModel, TaskAdapter.TaskViewHolder>(options) {
 

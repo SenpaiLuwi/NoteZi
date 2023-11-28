@@ -2,7 +2,7 @@
     <string name="app_name">NoteZi</string>
 
     <!-- REMEMBER TO CHANGE THE VERSION -->
-    <string name="AppVersion">Application Version ⓘ 0.25</string>
+    <string name="AppVersion">Application Version ⓘ 0.27</string>
 
     <!--Temporary Placeholders-->
     <string name="User">User</string>
@@ -20,10 +20,6 @@
     <string name="AddTask">Task Name</string>
     <string name="TaskDeadline">Task Deadline</string>
     <string name="TaskLink">Task Link</string>
-
-    <string name="Sort">Sort Your Task</string>
-    <string name="TaskSortName">Task Course Name</string>
-    <string name="TaskSortDeadline">Task Course Deadline</string>
 
     <!--Main Placeholders (SCHEDULE PAGE)-->
     <string name="AddSched">Add Schedule</string>

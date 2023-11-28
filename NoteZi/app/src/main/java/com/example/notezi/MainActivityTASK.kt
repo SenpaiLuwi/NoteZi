@@ -1,5 +1,6 @@
 package com.example.notezi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 
+@Suppress("DEPRECATION")
 class MainActivityTASK : AppCompatActivity() {
 
     // VARIABLES
@@ -185,13 +187,13 @@ class MainActivityTASK : AppCompatActivity() {
             val taskRef = FirebaseDatabase.getInstance().reference.child("tasks").child(it)
             taskRef.removeValue()
 
-
             // FUNCTION TASK COUNT AFTER DELETION // DEBUG THIS: MAKE TASK COUNT AFTER CREATE TASK
             updateTaskCount()
         }
     }
 
     // FUNCTION TO UPDATE COUNT THE TASK AND DISPLAYED
+    @SuppressLint("SetTextI18n")
     private fun updateTaskCount() {
 
         // FETCH TO CURRENT TASK COUNT FROM THE FIREBASE DATABASE OR ADAPTERS
