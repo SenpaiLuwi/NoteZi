@@ -1,11 +1,11 @@
 package com.example.notezi
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -13,21 +13,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
-@Suppress("DEPRECATION")
 class MainActivityTASK : AppCompatActivity() {
 
-    // VARIABLES
     private lateinit var mainTasksRecyclerView: RecyclerView
     private lateinit var taskAdapter: TaskAdapter
-
     private lateinit var addBtn: ImageView
-    private lateinit var taskBtn: View
-    private lateinit var schedBtn: View
-    private lateinit var profileBtn: View
-
     private lateinit var taskCountTextView: TextView
+    private lateinit var searchView: SearchView
 
     companion object {
         const val ADD_TASK_REQUEST = 1
@@ -37,131 +34,174 @@ class MainActivityTASK : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_task)
 
-        // UI COMPONENTS
+        // SET UP FOR EVENT LISTENERS
         initializeUI()
-
-        // RECYCLERVIEW AND ALSO THE ADAPTER
+        // RECYCLERVIEW FRO DISPLAY THE TASK
         initializeRecyclerView()
-
-        // CLICK LISTENERS FOR BUTTONS
+        // SET LISTENERS FOR NAVIGATION ON BTN AND UPDATE TASK COUNT
         setButtonListeners()
-
-        // UPDATE TASK COUNTER
+        // UPDATING THE INITIAL FOR TASK COUNT
         updateTaskCount()
     }
 
-    // FUNCTION FOR UI COMPONENTS PAR
     private fun initializeUI() {
-        taskBtn = findViewById(R.id.task_btn)
-        schedBtn = findViewById(R.id.sched_btn)
-        profileBtn = findViewById(R.id.profile_btn)
-        taskCountTextView = findViewById(R.id.taskId_txt)
         addBtn = findViewById(R.id.add_btn)
+        taskCountTextView = findViewById(R.id.taskId_txt)
+        searchView = findViewById(R.id.searchTask_btn)
+
+        // ADD BUTTON FOR START IN CREATE TASK
+        addBtn.setOnClickListener {
+            startUpdateTaskActivity()
+        }
+
+        // SEARCH VIEW FOR SEARCH FUNCTION AND ALSO FOR QUERY
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                // FUNCTION FOR USER IF TYPES IN SEARCHVIEW
+                performSearch(newText.orEmpty())
+                return true
+            }
+        })
     }
 
-    // FUNCTION FOR RECYCLERVIEW & ADAPTER
     private fun initializeRecyclerView() {
         mainTasksRecyclerView = findViewById(R.id.mainTasks_id)
         mainTasksRecyclerView.layoutManager = LinearLayoutManager(this)
 
+        // FIREBASE RECYCLER ADAPTER TO POPULATE THE RECYCLER VIEW WITH TASKS FROM DATABASE
         val options = FirebaseRecyclerOptions.Builder<TaskModel>()
             .setQuery(FirebaseDatabase.getInstance().reference.child("tasks"), TaskModel::class.java)
             .build()
 
-        // SET CLICKER FOR ITEM AND LONG PRESS ALSO
-
         taskAdapter = TaskAdapter(options)
         mainTasksRecyclerView.adapter = taskAdapter
 
+        // FUNCTION FOR LONG PRESS
         taskAdapter.setOnItemClickListener { taskModel ->
-            showOptionsDialog(taskModel)
+            showLinkConfirmationDialog(taskModel)
         }
 
+        // FUNCTION FOR ONE CLICK
         taskAdapter.setOnItemLongPressListener { taskModel ->
             showLongPressDialog(taskModel)
         }
     }
 
-    // FUNCTION FOR BUTTONS SET CLICKER ETC.
     private fun setButtonListeners() {
-        addBtn.setOnClickListener {
-            startUpdateTaskActivity()
-        }
 
-        taskBtn.setOnClickListener {
+        // FUNCTION FOR NAVIGATE TO INTENT ANOTHER ACTIVITIES
+        findViewById<View>(R.id.task_btn).setOnClickListener {
             startMainActivity(MainActivityTASK::class.java)
         }
 
-        schedBtn.setOnClickListener {
+        findViewById<View>(R.id.sched_btn).setOnClickListener {
             startMainActivity(MainActivitySCHEDULE::class.java)
         }
 
-        profileBtn.setOnClickListener {
+        findViewById<View>(R.id.profile_btn).setOnClickListener {
             startMainActivity(MainActivityPROFILE::class.java)
         }
     }
 
-    // FUNCTION FOR START NEW ACT BASED ON THE PROVIDED THE CLASS
     private fun startMainActivity(activityClass: Class<*>) {
+        // START ACTIVITY SPECIFIED
         val myIntent = Intent(this, activityClass)
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(myIntent)
     }
 
-    // FUNCTION START THE SideMainUPDATETASK.kt
     private fun startUpdateTaskActivity() {
+
+        // FUNCTION FOR START THE TASK CREATE AND ALSO UPDATING
         val myIntent = Intent(this, SideMainUPDATETASK::class.java)
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivityForResult(myIntent, ADD_TASK_REQUEST)
     }
 
-    // FUNCTION FOR SHOW ALERT DIALOG WITH OPTION
-    // EDIT / DELETE / OPEN LINK
-    private fun showOptionsDialog(taskModel: TaskModel) {
-        val options = arrayOf("Edit", "Delete", "Open Link")
+    private fun showLinkConfirmationDialog(taskModel: TaskModel) {
+
+        // SHOW THE ALERT DIALOG FOR CONFIRM THE OPENING LINK
+        val link = taskModel.taskLink
 
         AlertDialog.Builder(this)
-            .setTitle("Options")
-            .setItems(options) { _, which ->
-                when (which) {
-                    0 -> editTask(taskModel)
-                    1 -> deleteTask(taskModel)
-                    2 -> openLink(taskModel)
+            .setTitle("GO TO LINK?")
+            .setMessage("DO YOU WANT TO GO THE LINK?")
+            .setPositiveButton("YES") { _, _ ->
+                if (link.isNotBlank()) {
+
+                    // SHOW ALERT DIALOG TO CHOOSE WHAT APP FOR OPENING THE LINK
+                    showAppChooserDialog(link)
                 }
+            }
+            .setNegativeButton("NO") { dialog, _ ->
+                dialog.dismiss()
             }
             .show()
     }
 
-    // FUNCTION FOR OPEN LINK
-    private fun openLink(taskModel: TaskModel) {
-        val link = taskModel.taskLink
+    private fun showAppChooserDialog(link: String) {
 
-        if (link.isNotEmpty()) {
-            val intent = createLinkIntent(link)
+        // SHOW ALERT DIALOG TO CHOOSE WHAT APP FOR OPENING THE LINK
+        AlertDialog.Builder(this)
+            .setTitle("OPEN THE LINK WITH?")
+            .setItems(arrayOf("GOOGLE MEET", "GOOGLE CHROME")) { _, which ->
+                when (which) {
+                    0 -> openLinkInGoogleMeet(link)
+                    1 -> openLinkInApp(link, "com.android.chrome")
+                }
+            }
+            .setNegativeButton("CANCEL") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
+    private fun openLinkInApp(link: String, packageName: String) {
+
+        // OPEN THE LINK ON SPECIFIED APP OR TOAST THE MESSAGE IF THE APP NOT INSTALLED
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+        intent.`package` = packageName
+
+        if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         } else {
-            showToast("Task does not have a valid link.")
+            showToast("App not installed")
         }
     }
 
-    private fun createLinkIntent(link: String): Intent {
-        return if (link.startsWith("http://") || link.startsWith("https://")) {
-            Intent(Intent.ACTION_VIEW, Uri.parse(link))
+    private fun openLinkInGoogleMeet(link: String) {
+
+        // OPEN THE LINK IN GOOGLE MEET OR THE TOAST MESSAGE THE APP NOT INSTALLED
+        val googleMeetPackageName = "com.google.android.apps.meetings"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+        intent.`package` = googleMeetPackageName
+
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
         } else {
-            Intent(Intent.ACTION_VIEW, Uri.parse("http://$link"))
+            showToast("Google Meet app not installed")
         }
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        // Display a short toast message
+
+        Toast.makeText(this, "PLEASE INSTALL THE GOOGLE MEET UP TO PROCEED THE LINK", Toast.LENGTH_SHORT).show()
     }
 
-    // FUNCTION FOR SHOW DIALOG OPTION FOR LONG PRESS CLICK
     private fun showLongPressDialog(taskModel: TaskModel) {
-        val options = arrayOf("Edit", "Delete")
+
+        // FUNCTION LONG PRESS SHOW ALERT DIALOG FOR OPTION, EDIT, DELETE.
+        val options = arrayOf("EDIT", "DELETE")
 
         AlertDialog.Builder(this)
-            .setTitle("Options")
+            .setTitle("CHOOSE IF WANT TO DELETE, OR EDIT THE TASK:")
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> editTask(taskModel)
@@ -171,45 +211,104 @@ class MainActivityTASK : AppCompatActivity() {
             .show()
     }
 
-    // FUNCTION FOR EDIT DIALOG IF USER WANT TO EDIT TASK
     private fun editTask(taskModel: TaskModel) {
+
+        // START THE TASK EDITING ACTIVITY WITH SELECTED THE USER TASK
         val intent = Intent(this, SideMainUPDATETASK::class.java)
         intent.putExtra("TASK_MODEL", taskModel)
         startActivityForResult(intent, ADD_TASK_REQUEST)
     }
 
-    // FUNCTION FOR DELETED TASK
     private fun deleteTask(taskModel: TaskModel) {
-        val taskId = taskModel.taskId
 
-       // REMOVE THE TASK FROM THE DATABASE:
-        taskId?.let {
+        // DELETE THE SELECTED TASK FROM THE FIREBASE AND UPDATE ALSO IN THE TASK COUNTER
+        taskModel.taskId?.let {
             val taskRef = FirebaseDatabase.getInstance().reference.child("tasks").child(it)
             taskRef.removeValue()
-
-            // FUNCTION TASK COUNT AFTER DELETION // DEBUG THIS: MAKE TASK COUNT AFTER CREATE TASK
             updateTaskCount()
         }
     }
 
-    // FUNCTION TO UPDATE COUNT THE TASK AND DISPLAYED
-    @SuppressLint("SetTextI18n")
     private fun updateTaskCount() {
 
-        // FETCH TO CURRENT TASK COUNT FROM THE FIREBASE DATABASE OR ADAPTERS
-        val currentTaskCount = taskAdapter.itemCount
+        // UPDATE THE TASK COUNT BASED ON THE USER CREATE
+        val taskReference = FirebaseDatabase.getInstance().reference.child("tasks")
 
-        // UPDATE TEXTVIEW WITH CURRENT TASK COUNT
-        taskCountTextView.text = "Task Count: $currentTaskCount"
+        taskReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val count = snapshot.childrenCount.toInt()
+                taskCountTextView.text = "Task Count: $count"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // HANDLE ERROR IF NEEDED
+            }
+        })
+    }
+
+    private fun performSearch(searchTerm: String) {
+
+        // SEARCH VIEW PERFORM BASED ON THE ENTERED THE QUERY AND UPDATE ON RECYCLER VIEW ACCORDINGLY
+        taskAdapter.stopListening()
+
+        val query = if (searchTerm.isNotEmpty()) {
+            FirebaseDatabase.getInstance().reference.child("tasks")
+                .orderByChild("taskCourse").startAt(searchTerm).endAt(searchTerm + "\uf8ff")
+        } else {
+            FirebaseDatabase.getInstance().reference.child("tasks")
+        }
+
+        val newOptions = FirebaseRecyclerOptions.Builder<TaskModel>()
+            .setQuery(query, TaskModel::class.java)
+            .build()
+
+        val newTaskAdapter = TaskAdapter(newOptions)
+        newTaskAdapter.setOnItemClickListener { taskModel ->
+            showLinkConfirmationDialog(taskModel)
+        }
+
+        newTaskAdapter.setOnItemLongPressListener { taskModel ->
+            showLongPressDialog(taskModel)
+        }
+
+        newTaskAdapter.startListening()
+        mainTasksRecyclerView.adapter = newTaskAdapter
+
+        // TASK COUNT UPDATE FOR NEW ADAPTER
+        updateTaskCount()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        // HANDLE FOR THE RESULT FROM THE CREATE OR THE UPDATING ACTIVITY
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == ADD_TASK_REQUEST && resultCode == RESULT_OK) {
+            showToast("THE TASK ADDED SUCCESSFULLY")
+            taskAdapter.stopListening()
+            taskAdapter.startListening()
+            updateTaskCount()
+        }
     }
 
     override fun onStart() {
+
+        // START LISTENING FOR CHANGES ON FIREBASE RECYCLER ADAPTER IF THE ACTIVITY STARTS
         super.onStart()
         taskAdapter.startListening()
     }
 
     override fun onStop() {
+
+        // STOP LISTENING FOR CHANGES ON FIREBASE RECYCLER ADAPTER IF THE ACTIVITY STOP
         super.onStop()
         taskAdapter.stopListening()
+    }
+
+    override fun onBackPressed() {
+
+        // FINISH THE ACTIVITY WHEN THE BACK BUTTON IS PRESSED
+        finish()
+        super.onBackPressed()
     }
 }

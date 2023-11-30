@@ -2,10 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="230dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="40dp"
-    android:elevation="15dp"
+    android:elevation="10dp"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/blackColorBG"
     android:id="@+id/card_id">
@@ -19,8 +19,8 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:cardCornerRadius="50dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="40dp"
             app:cardBackgroundColor="@color/redColorBUTTONS"
             tools:ignore="TextSizeCheck">
 
@@ -35,7 +35,7 @@
                     android:fontFamily="@font/altonebold"
                     android:text="@string/AddTaskCourse"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -51,14 +51,28 @@
                     android:fontFamily="@font/altonebold"
                     android:text="@string/AddTask"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.345" />
+                    app:layout_constraintVertical_bias="0.503" />
+
+                <TextView
+                    android:id="@+id/task_type_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/altonebold"
+                    android:text="@string/AddType"
+                    android:textColor="@color/whiteColorTEXT"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.319" />
 
                 <TextView
                     android:id="@+id/task_deadline_id"
@@ -67,13 +81,14 @@
                     android:fontFamily="@font/altonebold"
                     android:text="@string/TaskDeadline"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.591" />
+                    app:layout_constraintVertical_bias="0.699" />
 
                 <TextView
                     android:id="@+id/task_link_id"
@@ -82,13 +97,13 @@
                     android:fontFamily="@font/altonebold"
                     android:text="@string/TaskLink"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.842" />
+                    app:layout_constraintVertical_bias="0.901" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

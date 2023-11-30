@@ -18,6 +18,7 @@
     <string name="AddTaskName">Add A Task</string>
     <string name="AddTaskCourse">Course Name</string>
     <string name="AddTask">Task Name</string>
+    <string name="AddType">Task Type</string>
     <string name="TaskDeadline">Task Deadline</string>
     <string name="TaskLink">Task Link</string>
 

@@ -24,7 +24,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/taskId_txt"
@@ -111,7 +111,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainTasks_id"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="475dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
