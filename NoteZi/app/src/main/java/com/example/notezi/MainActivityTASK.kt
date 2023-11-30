@@ -1,5 +1,6 @@
 package com.example.notezi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+@Suppress("DEPRECATION")
 class MainActivityTASK : AppCompatActivity() {
 
     private lateinit var mainTasksRecyclerView: RecyclerView
@@ -116,7 +118,6 @@ class MainActivityTASK : AppCompatActivity() {
     }
 
     private fun startUpdateTaskActivity() {
-
         // FUNCTION FOR START THE TASK CREATE AND ALSO UPDATING
         val myIntent = Intent(this, SideMainUPDATETASK::class.java)
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -162,6 +163,7 @@ class MainActivityTASK : AppCompatActivity() {
             .show()
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun openLinkInApp(link: String, packageName: String) {
 
         // OPEN THE LINK ON SPECIFIED APP OR TOAST THE MESSAGE IF THE APP NOT INSTALLED
@@ -171,12 +173,12 @@ class MainActivityTASK : AppCompatActivity() {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         } else {
-            showToast("App not installed")
+            showToast()
         }
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun openLinkInGoogleMeet(link: String) {
-
         // OPEN THE LINK IN GOOGLE MEET OR THE TOAST MESSAGE THE APP NOT INSTALLED
         val googleMeetPackageName = "com.google.android.apps.meetings"
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
@@ -185,13 +187,12 @@ class MainActivityTASK : AppCompatActivity() {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         } else {
-            showToast("Google Meet app not installed")
+            showToast()
         }
     }
 
-    private fun showToast(message: String) {
+    private fun showToast() {
         // Display a short toast message
-
         Toast.makeText(this, "PLEASE INSTALL THE GOOGLE MEET UP TO PROCEED THE LINK", Toast.LENGTH_SHORT).show()
     }
 
@@ -212,7 +213,6 @@ class MainActivityTASK : AppCompatActivity() {
     }
 
     private fun editTask(taskModel: TaskModel) {
-
         // START THE TASK EDITING ACTIVITY WITH SELECTED THE USER TASK
         val intent = Intent(this, SideMainUPDATETASK::class.java)
         intent.putExtra("TASK_MODEL", taskModel)
@@ -220,7 +220,6 @@ class MainActivityTASK : AppCompatActivity() {
     }
 
     private fun deleteTask(taskModel: TaskModel) {
-
         // DELETE THE SELECTED TASK FROM THE FIREBASE AND UPDATE ALSO IN THE TASK COUNTER
         taskModel.taskId?.let {
             val taskRef = FirebaseDatabase.getInstance().reference.child("tasks").child(it)
@@ -237,7 +236,7 @@ class MainActivityTASK : AppCompatActivity() {
         taskReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val count = snapshot.childrenCount.toInt()
-                taskCountTextView.text = "Task Count: $count"
+                taskCountTextView.text = "$count"
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -278,13 +277,14 @@ class MainActivityTASK : AppCompatActivity() {
         updateTaskCount()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         // HANDLE FOR THE RESULT FROM THE CREATE OR THE UPDATING ACTIVITY
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == ADD_TASK_REQUEST && resultCode == RESULT_OK) {
-            showToast("THE TASK ADDED SUCCESSFULLY")
+            showToast()
             taskAdapter.stopListening()
             taskAdapter.startListening()
             updateTaskCount()
@@ -305,6 +305,7 @@ class MainActivityTASK : AppCompatActivity() {
         taskAdapter.stopListening()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
 
         // FINISH THE ACTIVITY WHEN THE BACK BUTTON IS PRESSED

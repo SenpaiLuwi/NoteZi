@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/whiteColorTEXT"
+    android:background="@drawable/taskbg"
     tools:context=".MainActivityTASK">
 
 
@@ -21,40 +21,39 @@
         app:layout_constraintVertical_bias="0.0">
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="130dp">
 
             <TextView
                 android:id="@+id/taskId_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/asapcondensedextrabold"
                 android:text="@string/taskNumber"
                 android:textColor="@color/redColorBUTTONS"
-                android:textSize="30sp"
-                android:fontFamily="@font/asapcondensedextrabold"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.092"
+                app:layout_constraintHorizontal_bias="0.078"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.1" />
+                app:layout_constraintVertical_bias="0.097" />
 
             <TextView
                 android:id="@+id/dayWeek_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/asapcondensedextrabold"
                 android:text="@string/TasksToday"
                 android:textColor="@color/whiteColorTEXT"
-                android:textSize="20sp"
-                android:fontFamily="@font/asapcondensedextrabold"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.108"
+                app:layout_constraintHorizontal_bias="0.107"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.445" />
+                app:layout_constraintVertical_bias="0.38" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -111,13 +110,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainTasks_id"
         android:layout_width="match_parent"
-        android:layout_height="475dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="550dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintTop_toBottomOf="@+id/Card_View_One" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -136,8 +132,8 @@
 
             <ImageButton
                 android:id="@+id/task_btn"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:backgroundTint="#00FFFFFF"
                 android:importantForAccessibility="no"
                 android:scaleType="fitXY"
@@ -146,7 +142,7 @@
                 app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/redtodolist"
+                app:srcCompat="@drawable/redtodolistglow"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton

@@ -9,6 +9,7 @@ class SideMainSETTINGS : AppCompatActivity() {
 
     private lateinit var editprofile: TextView
     private lateinit var settingabout: TextView
+    private lateinit var settinghelp: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +17,7 @@ class SideMainSETTINGS : AppCompatActivity() {
 
         editprofile = findViewById(R.id.editprofile_id)
         settingabout = findViewById(R.id.settingabout_id)
+        settinghelp = findViewById(R.id.settinghelp_id)
 
         editprofile.setOnClickListener {
             startActivity(Intent(this, MainActivityEDITPROFILE::class.java))
@@ -23,6 +25,10 @@ class SideMainSETTINGS : AppCompatActivity() {
 
         settingabout.setOnClickListener {
             startActivity(Intent(this, SideABOUT::class.java))
+        }
+
+        settinghelp.setOnClickListener {
+            startActivity(Intent(this, SideHelp::class.java))
         }
     }
 }

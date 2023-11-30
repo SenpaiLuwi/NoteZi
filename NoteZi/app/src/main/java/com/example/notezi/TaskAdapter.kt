@@ -1,5 +1,6 @@
 package com.example.notezi
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
@@ -37,11 +38,11 @@ class TaskAdapter(options: FirebaseRecyclerOptions<TaskModel>) :
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         // VIEW THE RECYCLERVIEW ITEM
-        val courseTextView: TextView = itemView.findViewById(R.id.task_course_id)
-        val nameTextView: TextView = itemView.findViewById(R.id.task_name_id)
-        val typeTextView: TextView = itemView.findViewById(R.id.task_type_id)
-        val deadlineTextView: TextView = itemView.findViewById(R.id.task_deadline_id)
-        val linkTextView: TextView = itemView.findViewById(R.id.task_link_id)
+        private val courseTextView: TextView = itemView.findViewById(R.id.task_course_id)
+        private val nameTextView: TextView = itemView.findViewById(R.id.task_name_id)
+        private val typeTextView: TextView = itemView.findViewById(R.id.task_type_id)
+        private val deadlineTextView: TextView = itemView.findViewById(R.id.task_deadline_id)
+        private val linkTextView: TextView = itemView.findViewById(R.id.task_link_id)
 
         init {
             itemView.setOnClickListener {
@@ -62,6 +63,7 @@ class TaskAdapter(options: FirebaseRecyclerOptions<TaskModel>) :
         }
 
         // BINDING THE DATA TO THE VIEWS
+        @SuppressLint("ObsoleteSdkInt")
         fun bind(taskModel: TaskModel) {
             courseTextView.text = taskModel.taskCourse
             nameTextView.text = taskModel.taskName
