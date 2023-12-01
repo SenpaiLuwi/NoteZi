@@ -291,11 +291,13 @@ class MainActivityTASK : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onStart() {
 
         // START LISTENING FOR CHANGES ON FIREBASE RECYCLER ADAPTER IF THE ACTIVITY STARTS
         super.onStart()
         taskAdapter.startListening()
+        taskAdapter.notifyDataSetChanged()
     }
 
     override fun onStop() {

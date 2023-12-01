@@ -74,12 +74,14 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // Add Button on the Top Right of the Screen
         addButton.setOnClickListener {
+            Toast.makeText(this, "Add A Schedule", Toast.LENGTH_SHORT).show()
             // Calling the showUpdateDialog
             showUpdateDialog()
         }
 
         // Task Button
         taskBtn.setOnClickListener {
+            Toast.makeText(this, "Task", Toast.LENGTH_SHORT).show()
             val myIntent = Intent(this, MainActivityTASK::class.java)
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(myIntent)
@@ -87,6 +89,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // Schedule Button
         schedBtn.setOnClickListener {
+            Toast.makeText(this, "Schedule", Toast.LENGTH_SHORT).show()
             // Refreshes the CurrentDate of the users Phone
             val currentDate = getCurrentDate()
             timeView.text = currentDate
@@ -101,6 +104,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // Profile Button
         profileBtn.setOnClickListener {
+            Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
             val myIntent = Intent(this, MainActivityPROFILE::class.java)
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(myIntent)
@@ -171,6 +175,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
             } else if (subjLink.isEmpty()) {
                 validateMsg("Course Link", this)
             } else {
+                Toast.makeText(this, "Schedule Added", Toast.LENGTH_SHORT).show()
                 // SAVING IT TO THE DATABASE
                 val scheduleRef = FirebaseDatabase.getInstance().reference.child("schedule").push()
                 val scheduleModel = ScheduleModel(subjName, subjProf, subjTime, subjDay, subjLink)
@@ -230,6 +235,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
             } else if (updatedLink.isEmpty()) {
                 validateMsg("Course Link", this)
             } else {
+                Toast.makeText(this, "Schedule Updated", Toast.LENGTH_SHORT).show()
                 // UPDATE THE ITEM IN THE DATABASE
                 updateItem(position, updatedName, updatedProf, updatedTime, updatedDay, updatedLink)
                 dialogPlus.dismiss()
@@ -272,6 +278,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
     private fun deleteItem(position: Int) {
         val itemId = mainAdapter.getRef(position).key
         if (itemId != null) {
+            Toast.makeText(this, "Schedule Deleted", Toast.LENGTH_SHORT).show()
             FirebaseDatabase.getInstance().reference.child("schedule").child(itemId).removeValue()
         }
     }
@@ -348,6 +355,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // IF THE intent IS NOT NULL
         if (intent.resolveActivity(packageManager) != null) {
+            Toast.makeText(this, "Opening App", Toast.LENGTH_SHORT).show()
             startActivity(intent)
             // IF THE APP IS NOT INSTALLED
         } else {
@@ -366,6 +374,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         intent.`package` = googleMeetPackageName
         // IF THE intent IS NOT NULL
         if (intent.resolveActivity(packageManager) != null) {
+            Toast.makeText(this, "Opening App", Toast.LENGTH_SHORT).show()
             startActivity(intent)
             // IF THE APP IS NOT INSTALLED
         } else {
