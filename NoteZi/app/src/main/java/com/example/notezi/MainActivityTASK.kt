@@ -182,7 +182,6 @@ class MainActivityTASK : AppCompatActivity() {
     }
 
     private fun showLongPressDialog(taskModel: TaskModel) {
-
         // FUNCTION LONG PRESS SHOW ALERT DIALOG FOR OPTION, EDIT, DELETE.
         val options = arrayOf("EDIT", "DELETE")
 
@@ -191,12 +190,13 @@ class MainActivityTASK : AppCompatActivity() {
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> editTask(taskModel)
-                    1 -> deleteTask(taskModel)
+                    1 -> showDeleteConfirmationDialog(taskModel)
                 }
             }
             .show()
     }
 
+    // FUNCTION FOR THE TASK EDITING IF USER WANT TO EDIT TASK
     private fun editTask(taskModel: TaskModel) {
         // START THE TASK EDITING ACTIVITY WITH SELECTED THE USER TASK
         val intent = Intent(this, SideMainUPDATETASK::class.java)
@@ -204,14 +204,34 @@ class MainActivityTASK : AppCompatActivity() {
         startActivityForResult(intent, ADD_TASK_REQUEST)
     }
 
+    // FUNCTION FOR THE TASK SHOW THE ANOTHER DIALOG TO FOR SURE WANT TO DELETE THE TASK
+    private fun showDeleteConfirmationDialog(taskModel: TaskModel) {
+        // CREATES A DIALOG BOX
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Delete Confirmation")
+            .setMessage("Are you sure you want to delete this task?")
+            // IF YES THEN IT WILL REMOVE IT FROM THE FIREBASE AND UPDATE TASK COUNTER
+            .setPositiveButton("Yes") { _, _ ->
+                deleteTask(taskModel)
+                updateTaskCount()
+            }
+            // IF NO THEN IT WILL CLOSE THE DIALOG BOX
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.show()
+    }
+
+    // FUNCTION FOR DELETE THE TASK FROM THE DATABASE ALSO
     private fun deleteTask(taskModel: TaskModel) {
         // DELETE THE SELECTED TASK FROM THE FIREBASE AND UPDATE ALSO IN THE TASK COUNTER
         taskModel.taskId?.let {
             val taskRef = FirebaseDatabase.getInstance().reference.child("tasks").child(it)
             taskRef.removeValue()
-            updateTaskCount()
+            // FOR SOMETHING IN UPDATING THE TASK COUNT
         }
     }
+
 
     private fun updateTaskCount() {
 
