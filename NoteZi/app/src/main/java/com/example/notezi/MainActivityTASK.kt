@@ -150,10 +150,9 @@ class MainActivityTASK : AppCompatActivity() {
         // SHOW ALERT DIALOG TO CHOOSE WHAT APP FOR OPENING THE LINK
         AlertDialog.Builder(this)
             .setTitle("OPEN THE LINK WITH?")
-            .setItems(arrayOf("GOOGLE MEET", "GOOGLE CHROME")) { _, which ->
+            .setItems(arrayOf("GOOGLE CHROME")) { _, which ->
                 when (which) {
-                    0 -> openLinkInGoogleMeet(link)
-                    1 -> openLinkInApp(link, "com.android.chrome")
+                    0 -> openLinkInApp(link, "com.android.chrome")
                 }
             }
             .setNegativeButton("CANCEL") { dialog, _ ->
@@ -169,20 +168,6 @@ class MainActivityTASK : AppCompatActivity() {
         // OPEN THE LINK ON SPECIFIED APP OR TOAST THE MESSAGE IF THE APP NOT INSTALLED
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
         intent.`package` = packageName
-
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
-        } else {
-            showToast()
-        }
-    }
-
-    @SuppressLint("QueryPermissionsNeeded")
-    private fun openLinkInGoogleMeet(link: String) {
-        // OPEN THE LINK IN GOOGLE MEET OR THE TOAST MESSAGE THE APP NOT INSTALLED
-        val googleMeetPackageName = "com.google.android.apps.meetings"
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        intent.`package` = googleMeetPackageName
 
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
