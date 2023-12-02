@@ -9,7 +9,7 @@
     <string name="Email">Email</string>
     <string name="schoolID">School ID</string>
     <string name="Time">Nov 22 2023</string>
-    <string name="taskNumber">0</string>
+    <string name="taskNumber">100</string>
 
     <!--Main Placeholders (TASK/COURSE PAGE)-->
     <string name="Today">Today</string>
@@ -34,9 +34,9 @@
     <string name="SaveChanges">Save Changes</string>
     <string name="ChooseFile">Choose File</string>
     <string name="ProfilePicture">Profile Picture:</string>
-    <string name="UserName">User Name</string>
-    <string name="UserEmail">Email</string>
-    <string name="UserSchoolID">School ID</string>
+    <string name="UserName">User Name:</string>
+    <string name="UserEmail">Email:</string>
+    <string name="UserSchoolID">School ID:</string>
 
     <string name="ProfilePictureText">Profile Picture</string>
     <string name="UserNameText">User Name</string>
@@ -48,7 +48,6 @@
     <string name="EditUserProfile">Edit Profile</string>
     <string name="SettingsVersion">Application Version</string>
     <string name="SettingsAbout">About</string>
-    <string name="SettingsHelp">Help</string>
 
     <!--Main Placeholders (SETTINGS PAGE)-->
     <string name="AboutNoteZi">NoteZi is a Study Planner that is an app designed to help students organize their study schedules, set goals, and track their academic progress. Created by John Louie Ubias, Miguel Pilapil, and Rotsen David</string>

@@ -81,7 +81,6 @@ class SideMainUPDATETASK : AppCompatActivity() {
         if (emptyFields.isEmpty()) {
             if (isEditing) {
                 updateTaskInFirebase(course, task, type, deadline, link)
-                setResultForUpdatedTask()
             } else {
                 addTaskToFirebase(course, task, type, deadline, link)
             }
@@ -120,7 +119,6 @@ class SideMainUPDATETASK : AppCompatActivity() {
         return emptyFields
     }
 
-
     // FUNCTION FOR ADD A NEW TASK TO FIREBASE (DATABASE)
     private fun addTaskToFirebase(course: String, task: String, type: String, deadline: String, link: String) {
         val databaseReference = FirebaseDatabase.getInstance().reference.child("tasks")
@@ -138,18 +136,11 @@ class SideMainUPDATETASK : AppCompatActivity() {
         }
     }
 
-    // FUNCTION SET UP THE RESULT WHEN THE TASK UPDATED
-    private fun setResultForUpdatedTask() {
-        val updatedTaskModel = TaskModel(taskId, "", "", "", "", "")
-        val resultIntent = Intent()
-        resultIntent.putExtra("UPDATED_TASK_MODEL", updatedTaskModel)
-        setResult(Activity.RESULT_OK, resultIntent)
-    }
-
     // NAVIGATE OR INTENT BACK TO THE MAIN ACTIVITY TASK
     private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivityTASK::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        setResult(Activity.RESULT_OK, intent)
         startActivity(intent)
         finish()
     }

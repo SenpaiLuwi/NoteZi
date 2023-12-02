@@ -2,129 +2,108 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="230dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="40dp"
     android:elevation="10dp"
     app:cardUseCompatPadding="true"
-    app:cardBackgroundColor="@color/redColorBUTTONS"
+    app:cardBackgroundColor="@color/blackColorBG"
     android:id="@+id/card_id">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:padding="5dp"
+        android:padding="10dp"
         >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/blackColorBG"
+            android:layout_height="300dp"
+            app:cardCornerRadius="40dp"
+            app:cardBackgroundColor="@color/redColorBUTTONS"
             tools:ignore="TextSizeCheck">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:srcCompat="@drawable/schedbgdark"
-                    android:scaleType="fitXY"
-                    android:importantForAccessibility="no" />
-
                 <TextView
                     android:id="@+id/task_course_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/asapcondensedmedium"
+                    android:fontFamily="@font/altonebold"
                     android:text="@string/AddTaskCourse"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="23sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.100" />
+                    app:layout_constraintVertical_bias="0.103" />
 
                 <TextView
                     android:id="@+id/task_name_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/asapcondensedmedium"
+                    android:fontFamily="@font/altonebold"
                     android:text="@string/AddTask"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.40" />
-
+                    app:layout_constraintVertical_bias="0.503" />
 
                 <TextView
                     android:id="@+id/task_type_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/asapcondensedmedium"
+                    android:fontFamily="@font/altonebold"
                     android:text="@string/AddType"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.60" />
-
+                    app:layout_constraintVertical_bias="0.319" />
 
                 <TextView
                     android:id="@+id/task_deadline_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/asapcondensedmedium"
+                    android:fontFamily="@font/altonebold"
                     android:text="@string/TaskDeadline"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.77" />
+                    app:layout_constraintVertical_bias="0.699" />
 
                 <TextView
                     android:id="@+id/task_link_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/asapcondensedmedium"
+                    android:fontFamily="@font/altonebold"
                     android:text="@string/TaskLink"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.95" />
+                    app:layout_constraintVertical_bias="0.901" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

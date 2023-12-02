@@ -13,9 +13,6 @@ data class TaskModel(
     val taskLink: String = ""
 ) : Parcelable {
 
-    // SECONDARY CONSTRUCTOR FOR CREATING EMPTY TASK MODEL
-    constructor() : this(null, "", "", "", "", "")
-
     // SECONDARY CONSTRUCTOR FOR CREATING EMPTY TASK MODEL FROM PARCEL
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -28,6 +25,7 @@ data class TaskModel(
 
     // WRITE THE OBJECT DATA TO PARCEL
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(taskId)
         parcel.writeString(taskCourse)
         parcel.writeString(taskName)
         parcel.writeString(taskType)
@@ -40,14 +38,12 @@ data class TaskModel(
         return 0
     }
 
-
     // COMPANION OBJECT IMPLEMENTING PARCELABLE.
     companion object CREATOR : Parcelable.Creator<TaskModel> {
         // Create a TaskModel instance from a Parcel
         override fun createFromParcel(parcel: Parcel): TaskModel {
             return TaskModel(parcel)
         }
-
 
         // CREATE THE ARRAY OF TASK MODEL INSTANCE OF THE SPECIFIED SIZE
         override fun newArray(size: Int): Array<TaskModel?> {

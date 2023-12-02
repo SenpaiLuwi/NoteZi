@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,13 +8,13 @@
     app:cardCornerRadius="20dp"
     android:elevation="10dp"
     app:cardUseCompatPadding="true"
-    app:cardBackgroundColor="@color/redColorBUTTONS">
+    app:cardBackgroundColor="@color/blackColorBG">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="170dp"
-        android:padding="5dp"
+        android:padding="10dp"
         >
 
         <androidx.cardview.widget.CardView
@@ -27,36 +28,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:scaleType="fitXY"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:srcCompat="@drawable/taskbgdark"
-                    android:importantForAccessibility="no" />
-
                 <TextView
                     android:id="@+id/sched_name_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/AddSchedName"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="23sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.100" />
+                    app:layout_constraintVertical_bias="0.103" />
 
                 <TextView
                     android:id="@+id/sched_prof_id"
@@ -64,10 +51,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/ProfName"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -81,10 +68,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/TimeSubj"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -97,10 +84,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/DaySubj"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -113,10 +100,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asapcondensedmedium"
                     android:text="@string/LinkSubj"
-                    android:textAlignment="center"
                     android:textColor="@color/whiteColorTEXT"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/schedbg"
+    android:background="@color/whiteColorTEXT"
     tools:context=".MainActivitySCHEDULE">
 
 
@@ -82,9 +82,7 @@
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5">
-
-                    </SearchView>
+                        app:layout_constraintVertical_bias="0.5" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -140,8 +138,8 @@
 
             <ImageButton
                 android:id="@+id/sched_btn"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:backgroundTint="#00FFFFFF"
                 android:importantForAccessibility="no"
                 android:scaleType="fitXY"
@@ -150,7 +148,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/redscheduleglow"
+                app:srcCompat="@drawable/redschedule"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton

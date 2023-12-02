@@ -5,14 +5,12 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.VideoView
 
 @Suppress("DEPRECATION")
 @SuppressLint("CustomSplashScreen")
@@ -21,8 +19,6 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
     // Variables Used
     private lateinit var progBar: ProgressBar
     private lateinit var splashText: TextView
-    private lateinit var videoView: VideoView
-
 
     private val sentences = mutableListOf(
         "Checking the Internet Connection",
@@ -46,37 +42,24 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
         // Initialize variables
         progBar = findViewById(R.id.progBar_id)
         splashText = findViewById(R.id.splashText_id)
-        videoView = findViewById(R.id.videoView)
 
         // Start changing text every 3 seconds
         startTextChange()
 
-        val videoPath = "android.resource://" + packageName + "/" + R.raw.notezibg
-        val uri = Uri.parse(videoPath)
-
-        // Set video URI and start playing
-        videoView.setVideoURI(uri)
-        videoView.start()
-
-        // Loop the video
-        videoView.setOnPreparedListener { mp ->
-            mp.isLooping = true
-        }
-
-        // Loading delay of 5 secs
+        // Loading delay of 10 secs
         Handler().postDelayed({
             checkInternetAndNavigate()
-        }, 5000)
+        }, 10000)
     }
 
-    // Start changing text every 1.5 seconds
+    // Start changing text every 3 seconds
     private fun startTextChange() {
         textChangeHandler.postDelayed(object : Runnable {
             override fun run() {
                 splashText.text = getRandomSentence()
-                textChangeHandler.postDelayed(this, 1500)
+                textChangeHandler.postDelayed(this, 3000)
             }
-        }, 1500)
+        }, 2500)
     }
 
     // Stop changing text when the activity is destroyed
@@ -141,6 +124,4 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
         val alertDialog: AlertDialog = builder.create()
         alertDialog.show()
     }
-
-
 }
