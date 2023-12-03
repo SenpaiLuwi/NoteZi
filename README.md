@@ -1,6 +1,6 @@
 # NoteZi
 <div align="center">
-  <img src="https://i.imgur.com/x5iNo2x.png" style="display:inline-block;height:100px;">
+  <img src="https://i.imgur.com/x5iNo2x.png" style="display:inline-block;height:500px;">
 </div>
 
 <div align="center">
