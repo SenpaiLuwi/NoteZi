@@ -114,7 +114,7 @@ class MainSPLASHACTIVITY : AppCompatActivity() {
         // Check internet connection
         if (isNetworkAvailable()) {
             // Intent to MainActivity
-            Toast.makeText(this, "Welcome Nigga!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Welcome Student!", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivityTASK::class.java)
             startActivity(intent)
             finish()

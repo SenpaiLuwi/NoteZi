@@ -63,9 +63,16 @@ class MainActivityPROFILE : AppCompatActivity() {
                     userSchoolIDTextView.text = userFromDatabase.userSchoolID
 
                     // Load and display the user profile image using Glide
-                    Glide.with(this@MainActivityPROFILE)
-                        .load(Uri.parse(userFromDatabase.userProfileImageUri))
-                        .into(userProfileImageView)
+                    if (userFromDatabase.userProfileImageUri.isNotBlank()) {
+                        Glide.with(this@MainActivityPROFILE)
+                            .load(Uri.parse(userFromDatabase.userProfileImageUri))
+                            .into(userProfileImageView)
+                    } else {
+                        val defaultImageUri = Uri.parse("android.resource://${packageName}/${R.drawable.icongithub}")
+                        Glide.with(this@MainActivityPROFILE)
+                            .load(defaultImageUri)
+                            .into(userProfileImageView)
+                    }
                 } else {
                     showToast("Failed to retrieve user data from the database.")
                 }

@@ -60,7 +60,7 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
         userEmailEditText.addTextChangedListener(createTextWatcher())
         userSchoolIDEditText.addTextChangedListener(createTextWatcher())
 
-// Set a click listener for the "Save Changes" button
+        // Set a click listener for the "Save Changes" button
         saveChangesButton.setOnClickListener {
             // Retrieve user input from EditTexts
             val userName = userNameEditText.text.toString().takeIf { it.isNotBlank() }
@@ -76,6 +76,7 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
                 validateMsg("School ID", this)
             } else {
                 // Continue with the save operation since all fields are non-empty
+
                 // Retrieve current user data from the database
                 databaseReference.child(currentUserUid).addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -151,13 +152,21 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
         }
     }
 
-    // Function to update the UI with the entered user information
+// Function to update the UI with the entered user information
     private fun updateProfileUI(imageUri: Uri?) {
         // If an image is selected, update the user profile image view
         if (imageUri != null) {
             userProfileImageView.setImageURI(imageUri)
+        } else {
+            // If no image is selected, use the default image URL
+            val defaultImageUri = Uri.parse("android.resource://${packageName}/${R.drawable.icongithub}")
+            userProfileImageView.setImageURI(defaultImageUri)
+
+            // Store the selected image URI as the default image URI
+            selectedImageUri = defaultImageUri
         }
     }
+
 
     // Function to load user data initially
     private fun loadUserData() {
