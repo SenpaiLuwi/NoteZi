@@ -29,19 +29,19 @@ Other Functionalities:
 GitHub Link:
 https://github.com/SenpaiLuwi/NoteZi
 
-Credits to:
-John Louie Ubias
-https://www.facebook.com/SenpaiLuwii
-https://github.com/SenpaiLuwi
-
-Miguel Pilapil
-https://www.facebook.com/ShappyYYy
-https://github.com/shap30
-
-Rotsen David
-https://www.facebook.com/rotsen.david.5
-https://github.com/rezenro23
-
+Credits to:<br>
+John Louie Ubias<br>
+https://www.facebook.com/SenpaiLuwii<br>
+https://github.com/SenpaiLuwi<br>
+<br>
+Miguel Pilapil<br>
+https://www.facebook.com/ShappyYYy<br>
+https://github.com/shap30<br>
+<br>
+Rotsen David<br>
+https://www.facebook.com/rotsen.david.5<br>
+https://github.com/rezenro23<br>
+<br>
 
 How to Install:
 1. Use the Link for the installation (Make sure that you are on Mobile): 
