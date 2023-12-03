@@ -46,7 +46,7 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
         // Initialize Firebase database reference
         databaseReference = FirebaseDatabase.getInstance().reference.child("users")
 
-        // Replace the following line with your logic to get the current user identifier
+        // Firebase ID
         currentUserUid = "NDjkGlDq3678HDdJ3f"
 
         // Set a click listener for the profile image to pick an image from the gallery
