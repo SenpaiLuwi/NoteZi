@@ -67,6 +67,9 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
             val userEmail = userEmailEditText.text.toString().takeIf { it.isNotBlank() }
             val userSchoolID = userSchoolIDEditText.text.toString().takeIf { it.isNotBlank() }
 
+            // Use a default profile image URI if no image is selected
+            val defaultImageUri = "android.resource://${packageName}/${R.drawable.joshhutchersonpic}"
+
             // VALIDATION OF THE USER INPUT
             if (userName == null) {
                 validateMsg("User Name", this)
