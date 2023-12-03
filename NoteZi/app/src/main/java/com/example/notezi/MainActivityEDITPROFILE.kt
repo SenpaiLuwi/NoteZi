@@ -3,13 +3,15 @@ package com.example.notezi
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.bumptech.glide.Glide
+import com.google.firebase.database.*
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MainActivityEDITPROFILE : AppCompatActivity() {
@@ -20,9 +22,6 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
     private lateinit var userSchoolIDEditText: EditText
     private lateinit var saveChangesButton: Button
     private lateinit var userProfileImageView: CircleImageView
-
-    // Request code for picking an image
-    private val pickImageRequestCode = 123
 
     // Variable to store the selected image URI
     private var selectedImageUri: Uri? = null
@@ -55,30 +54,61 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
             pickImageFromGallery()
         }
 
+        // Set text change listeners for EditText fields to update UI in real-time
+        userNameEditText.addTextChangedListener(createTextWatcher(userNameEditText))
+        userEmailEditText.addTextChangedListener(createTextWatcher(userEmailEditText))
+        userSchoolIDEditText.addTextChangedListener(createTextWatcher(userSchoolIDEditText))
+
         // Set a click listener for the "Save Changes" button
         saveChangesButton.setOnClickListener {
             // Retrieve user input from EditTexts
-            val userName = userNameEditText.text.toString()
-            val userEmail = userEmailEditText.text.toString()
-            val userSchoolID = userSchoolIDEditText.text.toString()
+            val userName = userNameEditText.text.toString().takeIf { it.isNotBlank() } ?: "User Name"
+            val userEmail = userEmailEditText.text.toString().takeIf { it.isNotBlank() } ?: "Email"
+            val userSchoolID = userSchoolIDEditText.text.toString().takeIf { it.isNotBlank() } ?: "School ID"
 
-            // Create a User object with the entered information and the selected image URI
-            val user = User(userName, userEmail, userSchoolID, selectedImageUri.toString())
+            // Use a default profile image URI if no image is selected
+            val defaultImageUri = "android.resource://${packageName}/${R.drawable.joshhutchersonpic}"
 
-            // Update the user data in the Firebase Realtime Database using the existing user ID
-            databaseReference.child(currentUserUid).setValue(user)
+            // Retrieve current user data from the database
+            databaseReference.child(currentUserUid).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        val userFromDatabase: User = dataSnapshot.getValue(User::class.java) ?: return
 
-            // Create an Intent to pass data to MainActivityPROFILE
-            val intent = Intent(this, MainActivityPROFILE::class.java).apply {
-                putExtra(MainActivityPROFILE.EXTRA_USER_NAME, userName)
-                putExtra(MainActivityPROFILE.EXTRA_USER_EMAIL, userEmail)
-                putExtra(MainActivityPROFILE.EXTRA_USER_SCHOOL_ID, userSchoolID)
-                putExtra(MainActivityPROFILE.EXTRA_USER_PROFILE_IMAGE_URI, selectedImageUri.toString())
-            }
+                        // Use the default image URI if no image is selected
+                        val profileImageUri = selectedImageUri?.toString() ?: userFromDatabase.userProfileImageUri
 
-            // Start MainActivityPROFILE with the provided data
-            startActivity(intent)
+                        // Changes are made, update the user data in the Firebase Realtime Database using the existing user ID
+                        val user = User(userName, userEmail, userSchoolID, profileImageUri)
+                        databaseReference.child(currentUserUid).setValue(user)
+
+                        // Create an Intent to pass data to MainActivityPROFILE
+                        val intent = Intent(this@MainActivityEDITPROFILE, MainActivityPROFILE::class.java).apply {
+                            putExtra(MainActivityPROFILE.EXTRA_USER_NAME, userName)
+                            putExtra(MainActivityPROFILE.EXTRA_USER_EMAIL, userEmail)
+                            putExtra(MainActivityPROFILE.EXTRA_USER_SCHOOL_ID, userSchoolID)
+                            putExtra(MainActivityPROFILE.EXTRA_USER_PROFILE_IMAGE_URI, profileImageUri)
+                        }
+
+                        // Start MainActivityPROFILE with the provided data
+                        startActivity(intent)
+
+                        // Finish the current activity to prevent going back to MainActivityEDITPROFILE when pressing back
+                        finish()
+                    } else {
+                        // No changes are made, show a message or handle it accordingly
+                        showToast("No changes made.")
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    showToast("Failed to retrieve user data from the database.")
+                }
+            })
         }
+
+        // Load user data initially
+        loadUserData()
     }
 
     // Function to start an activity to pick an image from the gallery
@@ -95,4 +125,61 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
             // Store the selected image URI
             selectedImageUri = uri
         }
+
+    // Function to create a TextWatcher for dynamic updates
+    private fun createTextWatcher(editText: EditText): TextWatcher {
+        return object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                // Update the UI dynamically
+                updateProfileUI(
+                    userNameEditText.text.toString(),
+                    userEmailEditText.text.toString(),
+                    userSchoolIDEditText.text.toString(),
+                    selectedImageUri
+                )
+            }
+        }
+    }
+
+    // Function to update the UI with the entered user information
+    private fun updateProfileUI(userName: String, userEmail: String, userSchoolID: String, imageUri: Uri?) {
+        // If an image is selected, update the user profile image view
+        if (imageUri != null) {
+            userProfileImageView.setImageURI(imageUri)
+        }
+    }
+
+    // Function to load user data initially
+    private fun loadUserData() {
+        databaseReference.child(currentUserUid).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val userFromDatabase: User = dataSnapshot.getValue(User::class.java) ?: return
+
+                    // Load and display the user profile image using Glide
+                    Glide.with(this@MainActivityEDITPROFILE)
+                        .load(Uri.parse(userFromDatabase.userProfileImageUri))
+                        .into(userProfileImageView)
+
+                    // Set the text of the EditText fields with the existing user data
+                    userNameEditText.setText(userFromDatabase.userName)
+                    userEmailEditText.setText(userFromDatabase.userEmail)
+                    userSchoolIDEditText.setText(userFromDatabase.userSchoolID)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                showToast("Failed to retrieve user data from the database.")
+            }
+        })
+    }
+
+    // Function to show a toast message
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }
