@@ -45,7 +45,7 @@ https://github.com/rezenro23<br>
 
 How to Install:
 1. Use the Link for the installation (Make sure that you are on Mobile):<br>
-https://drive.google.com/file/d/1qLfnOIEf4mi9nIXIs6Kag-ZSmHAbcLe7/view?usp=sharing<br>
+https://drive.google.com/file/d/19YUwiyeSmyMUGc-SbCN1PlI9IbyHdzkU/view?usp=sharing<br>
 https://github.com/SenpaiLuwi/NoteZi/blob/main/NoteZi.apk
 
 2. Copy the link to your clipboard. and go to Google and paste the link. If you click only a link an error message will appear "Fixed Access to doc-0s-54-docs.googleusercontent.com was denied".
