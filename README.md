@@ -5,7 +5,7 @@
 
 <div align="center">
   <em>“NoteZi” Introducing NoteZi - your ultimate task and schedule companion for students!</em><br><br>
-</div
+</div>
 
 By:  The Fuhrers_Ubias_Pilapil_David
 
