@@ -45,7 +45,6 @@ https://github.com/rezenro23<br>
 
 How to Install:
 1. Use the Link for the installation (Make sure that you are on Mobile): 
-<br>
     https://drive.google.com/file/d/1qLfnOIEf4mi9nIXIs6Kag-ZSmHAbcLe7/view?usp=sharing
 <br>
     https://github.com/SenpaiLuwi/NoteZi/blob/main/NoteZi.apk
