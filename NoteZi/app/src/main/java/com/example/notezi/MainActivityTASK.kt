@@ -96,14 +96,17 @@ class MainActivityTASK : AppCompatActivity() {
     private fun setButtonListeners() {
         // FUNCTION FOR NAVIGATE TO INTENT ANOTHER ACTIVITIES
         findViewById<View>(R.id.task_btn).setOnClickListener {
+            Toast.makeText(this, "You are already in the Task Section", Toast.LENGTH_SHORT).show()
             startMainActivity(MainActivityTASK::class.java)
         }
 
         findViewById<View>(R.id.sched_btn).setOnClickListener {
+            Toast.makeText(this, "Schedule", Toast.LENGTH_SHORT).show()
             startMainActivity(MainActivitySCHEDULE::class.java)
         }
 
         findViewById<View>(R.id.profile_btn).setOnClickListener {
+            Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
             startMainActivity(MainActivityPROFILE::class.java)
         }
     }
@@ -117,9 +120,9 @@ class MainActivityTASK : AppCompatActivity() {
 
     private fun startUpdateTaskActivity() {
         // FUNCTION TO START THE TASK CREATE AND ALSO UPDATING
+        Toast.makeText(this, "Add a Task", Toast.LENGTH_SHORT).show()
         val myIntent = Intent(this, SideMainUPDATETASK::class.java)
         myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-
         startActivityForResult(myIntent, ADD_TASK_REQUEST)
     }
 
@@ -128,15 +131,15 @@ class MainActivityTASK : AppCompatActivity() {
         val link = taskModel.taskLink
 
         AlertDialog.Builder(this)
-            .setTitle("GO TO LINK?")
-            .setMessage("DO YOU WANT TO GO TO THE LINK?")
-            .setPositiveButton("YES") { _, _ ->
+            .setTitle("Go to Link?")
+            .setMessage("Do you want to go to the link?")
+            .setPositiveButton("yes") { _, _ ->
                 if (link.isNotBlank()) {
                     // SHOW ALERT DIALOG TO CHOOSE WHAT APP FOR OPENING THE LINK
                     showAppChooserDialog(link)
                 }
             }
-            .setNegativeButton("NO") { dialog, _ ->
+            .setNegativeButton("no") { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
@@ -145,11 +148,10 @@ class MainActivityTASK : AppCompatActivity() {
     private fun showAppChooserDialog(link: String) {
         // SHOW ALERT DIALOG TO CHOOSE WHAT APP FOR OPENING THE LINK
         AlertDialog.Builder(this)
-            .setTitle("OPEN THE LINK WITH?")
-            .setItems(arrayOf("GOOGLE MEET", "GOOGLE CHROME")) { _, which ->
+            .setTitle("Open the Link with")
+            .setItems(arrayOf("GOOGLE CHROME")) { _, which ->
                 when (which) {
-                    0 -> openLinkInGoogleMeet(link)
-                    1 -> openLinkInApp(link, "com.android.chrome")
+                    0 -> openLinkInApp(link, "com.android.chrome")
                 }
             }
             .setNegativeButton("CANCEL") { dialog, _ ->
@@ -172,31 +174,17 @@ class MainActivityTASK : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
-    private fun openLinkInGoogleMeet(link: String) {
-        // OPEN THE LINK IN GOOGLE MEET OR SHOW A TOAST MESSAGE IF THE APP IS NOT INSTALLED
-        val googleMeetPackageName = "com.google.android.apps.meetings"
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        intent.`package` = googleMeetPackageName
-
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
-        } else {
-            showToast()
-        }
-    }
-
     private fun showToast() {
         // Display a short toast message
-        Toast.makeText(this, "PLEASE INSTALL GOOGLE MEET TO PROCEED WITH THE LINK", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Please Install Google Meet to proceed with the Link", Toast.LENGTH_SHORT).show()
     }
 
     private fun showLongPressDialog(taskModel: TaskModel) {
         // FUNCTION LONG PRESS SHOW ALERT DIALOG FOR OPTION, EDIT, DELETE.
-        val options = arrayOf("EDIT", "DELETE")
+        val options = arrayOf("Edit", "Delete")
 
         AlertDialog.Builder(this)
-            .setTitle("CHOOSE IF WANT TO DELETE, OR EDIT THE TASK:")
+            .setTitle("Choose if want to delete, or edit the task:")
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> editTask(taskModel)
@@ -219,6 +207,7 @@ class MainActivityTASK : AppCompatActivity() {
             }
             // If NO, then it will close the dialog box
             .setNegativeButton("No") { dialog, _ ->
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
         builder.show()
@@ -226,6 +215,7 @@ class MainActivityTASK : AppCompatActivity() {
 
     private fun editTask(taskModel: TaskModel) {
         // START THE TASK EDITING ACTIVITY WITH THE SELECTED USER TASK
+        Toast.makeText(this, "Editing the Task", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, SideMainUPDATETASK::class.java)
         intent.putExtra("TASK_MODEL", taskModel)
         startActivityForResult(intent, ADD_TASK_REQUEST)
@@ -235,6 +225,7 @@ class MainActivityTASK : AppCompatActivity() {
     private fun deleteTask(taskModel: TaskModel) {
         // DELETE THE SELECTED TASK FROM THE FIREBASE AND UPDATE ALSO IN THE TASK COUNTER
         taskModel.taskId?.let {
+            Toast.makeText(this, "Task Deleted", Toast.LENGTH_SHORT).show()
             val taskRef = FirebaseDatabase.getInstance().reference.child("tasks").child(it)
             taskRef.removeValue()
             // For something in updating the task count
@@ -249,7 +240,7 @@ class MainActivityTASK : AppCompatActivity() {
             @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 val count = snapshot.childrenCount.toInt()
-                taskCountTextView.text = "Task Count: $count"
+                taskCountTextView.text = "$count"
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -302,10 +293,12 @@ class MainActivityTASK : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onStart() {
         // START LISTENING FOR CHANGES ON FIREBASE RECYCLER ADAPTER IF THE ACTIVITY STARTS
         super.onStart()
         taskAdapter.startListening()
+        taskAdapter.notifyDataSetChanged()
     }
 
     override fun onStop() {

@@ -16,6 +16,8 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import com.orhanobut.dialogplus.DialogPlus
 import java.util.*
+import android.widget.Toast
+
 @Suppress("NAME_SHADOWING")
 class MainActivitySCHEDULE : AppCompatActivity() {
 
@@ -29,7 +31,6 @@ class MainActivitySCHEDULE : AppCompatActivity() {
     private lateinit var addButton: ImageButton
     private lateinit var searchSched: SearchView
     private lateinit var mainAdapter: ScheduleAdapter
-
 
     // START OF ONCREATE
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,12 +75,14 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // Add Button on the Top Right of the Screen
         addButton.setOnClickListener {
+            Toast.makeText(this, "Add A Schedule", Toast.LENGTH_SHORT).show()
             // Calling the showUpdateDialog
             showUpdateDialog()
         }
 
         // Task Button
         taskBtn.setOnClickListener {
+            Toast.makeText(this, "Task", Toast.LENGTH_SHORT).show()
             val myIntent = Intent(this, MainActivityTASK::class.java)
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(myIntent)
@@ -87,6 +90,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // Schedule Button
         schedBtn.setOnClickListener {
+            Toast.makeText(this, "You are already in the Schedule Section", Toast.LENGTH_SHORT).show()
             // Refreshes the CurrentDate of the users Phone
             val currentDate = getCurrentDate()
             timeView.text = currentDate
@@ -101,6 +105,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // Profile Button
         profileBtn.setOnClickListener {
+            Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
             val myIntent = Intent(this, MainActivityPROFILE::class.java)
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(myIntent)
@@ -171,6 +176,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
             } else if (subjLink.isEmpty()) {
                 validateMsg("Course Link", this)
             } else {
+                Toast.makeText(this, "Schedule Added", Toast.LENGTH_SHORT).show()
                 // SAVING IT TO THE DATABASE
                 val scheduleRef = FirebaseDatabase.getInstance().reference.child("schedule").push()
                 val scheduleModel = ScheduleModel(subjName, subjProf, subjTime, subjDay, subjLink)
@@ -226,10 +232,11 @@ class MainActivitySCHEDULE : AppCompatActivity() {
             } else if (updatedTime.isEmpty()) {
                 validateMsg("Course Time", this)
             } else if (updatedDay.isEmpty()) {
-                validateMsg("Course Link", this)
+                validateMsg("Course Day", this)
             } else if (updatedLink.isEmpty()) {
                 validateMsg("Course Link", this)
             } else {
+                Toast.makeText(this, "Schedule Updated", Toast.LENGTH_SHORT).show()
                 // UPDATE THE ITEM IN THE DATABASE
                 updateItem(position, updatedName, updatedProf, updatedTime, updatedDay, updatedLink)
                 dialogPlus.dismiss()
@@ -272,6 +279,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
     private fun deleteItem(position: Int) {
         val itemId = mainAdapter.getRef(position).key
         if (itemId != null) {
+            Toast.makeText(this, "Schedule Deleted", Toast.LENGTH_SHORT).show()
             FirebaseDatabase.getInstance().reference.child("schedule").child(itemId).removeValue()
         }
     }
@@ -334,6 +342,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
             }
             // CLOSES THE DIALOG BOX
             .setNegativeButton("Cancel") { dialog, _ ->
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
             .create()
@@ -348,6 +357,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
         // IF THE intent IS NOT NULL
         if (intent.resolveActivity(packageManager) != null) {
+            Toast.makeText(this, "Opening Chrome", Toast.LENGTH_SHORT).show()
             startActivity(intent)
             // IF THE APP IS NOT INSTALLED
         } else {
@@ -366,6 +376,7 @@ class MainActivitySCHEDULE : AppCompatActivity() {
         intent.`package` = googleMeetPackageName
         // IF THE intent IS NOT NULL
         if (intent.resolveActivity(packageManager) != null) {
+            Toast.makeText(this, "Opening Google Meet", Toast.LENGTH_SHORT).show()
             startActivity(intent)
             // IF THE APP IS NOT INSTALLED
         } else {
@@ -404,6 +415,6 @@ class MainActivitySCHEDULE : AppCompatActivity() {
 
     // VALIDATION OF THE USER INPUT
     private fun validateMsg(field: String, context: Context) {
-        Toast.makeText(context, "Please enter the $field", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Please Enter the $field", Toast.LENGTH_SHORT).show()
     }
 }

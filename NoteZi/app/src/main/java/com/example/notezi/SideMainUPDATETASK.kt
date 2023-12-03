@@ -54,7 +54,7 @@ class SideMainUPDATETASK : AppCompatActivity() {
                 taskId = taskModel.taskId
                 displayTaskDetails(taskModel)
             } else {
-                showToast("ERROR, PLEASE TRY AGAIN.")
+                showToast("Error, Please try again.")
             }
         }
     }
@@ -87,7 +87,7 @@ class SideMainUPDATETASK : AppCompatActivity() {
 
             navigateToMainActivity()
         } else {
-            val message = "PLEASE FILL UP THE BLANK OF:\n${emptyFields.joinToString(", ")}"
+            val message = "Please fill up the ${emptyFields.joinToString(", ")}"
             showToast(message)
         }
     }
@@ -97,23 +97,23 @@ class SideMainUPDATETASK : AppCompatActivity() {
         val emptyFields = mutableListOf<String>()
 
         if (course.isEmpty()) {
-            emptyFields.add("COURSE")
+            emptyFields.add("Course")
         }
 
         if (task.isEmpty()) {
-            emptyFields.add("TASK")
+            emptyFields.add("Task")
         }
 
         if (type.isEmpty()) {
-            emptyFields.add("TYPE")
+            emptyFields.add("Task Type")
         }
 
         if (deadline.isEmpty()) {
-            emptyFields.add("DEADLINE")
+            emptyFields.add("Deadline")
         }
 
         if (link.isEmpty()) {
-            emptyFields.add("LINK")
+            emptyFields.add("Link")
         }
 
         return emptyFields

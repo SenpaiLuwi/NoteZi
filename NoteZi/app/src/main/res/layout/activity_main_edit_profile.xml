@@ -28,7 +28,7 @@
                 android:id="@+id/userId_Img"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/buss"
+                android:src="@drawable/joshhutchersonpic"
                 app:civ_border_color="@color/redColorBUTTONS"
                 app:civ_border_width="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +57,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.226" />
@@ -76,7 +76,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.378" />
@@ -94,7 +94,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.512" />
@@ -107,6 +107,7 @@
         android:ems="10"
         android:fontFamily="@font/asapcondensedmedium"
         android:hint="@string/UserNameText"
+        android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="10dp"
@@ -115,11 +116,10 @@
         android:textColorHint="#D50000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.29" />
 
     <EditText
         android:id="@+id/edit_userEmail_id"
@@ -138,7 +138,7 @@
         android:textColorHint="#D50000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.438"
@@ -153,7 +153,7 @@
         android:fontFamily="@font/asapcondensedmedium"
         android:hint="@string/UserSchoolIDText"
         android:importantForAutofill="no"
-        android:inputType="numberDecimal"
+        android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -161,7 +161,7 @@
         android:textColorHint="#D50000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.576" />
