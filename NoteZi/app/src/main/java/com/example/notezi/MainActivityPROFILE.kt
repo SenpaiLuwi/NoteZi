@@ -13,6 +13,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class MainActivityPROFILE : AppCompatActivity() {
 
+    // Declare UI elements
     private lateinit var taskBtn: ImageButton
     private lateinit var schedBtn: ImageButton
     private lateinit var profileBtn: ImageButton
@@ -23,10 +24,12 @@ class MainActivityPROFILE : AppCompatActivity() {
     private lateinit var userSchoolIDTextView: TextView
     private lateinit var userProfileImageView: CircleImageView
 
+    // Firebase database references
     private lateinit var usersDatabaseReference: DatabaseReference
     private lateinit var currentUserUid: String // Replace this with your user identifier logic
 
     companion object {
+        // Constants for passing data between activities
         const val EXTRA_USER_NAME = "com.example.notezi.EXTRA_USER_NAME"
         const val EXTRA_USER_EMAIL = "com.example.notezi.EXTRA_USER_EMAIL"
         const val EXTRA_USER_SCHOOL_ID = "com.example.notezi.EXTRA_USER_SCHOOL_ID"
@@ -40,6 +43,7 @@ class MainActivityPROFILE : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_profile)
 
+        // Initialize UI elements
         taskBtn = findViewById(R.id.task_btn)
         schedBtn = findViewById(R.id.sched_btn)
         profileBtn = findViewById(R.id.profile_btn)
@@ -50,17 +54,21 @@ class MainActivityPROFILE : AppCompatActivity() {
         userSchoolIDTextView = findViewById(R.id.userSchoolID_txt)
         userProfileImageView = findViewById(R.id.userId_Img)
 
-        // Replace the following line with your logic to get the current user identifier
+        // Firebase ID
         currentUserUid = "NDjkGlDq3678HDdJ3f"
 
+        // Firebase database reference
         usersDatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
         val query: Query = usersDatabaseReference.child(currentUserUid)
 
+        // Read data from Firebase
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
+                    // Retrieve user data from the database
                     val userFromDatabase: User = dataSnapshot.getValue(User::class.java) ?: return
 
+                    // Update UI with user data
                     userNameTextView.text = userFromDatabase.userName
                     userEmailTextView.text = userFromDatabase.userEmail
                     userSchoolIDTextView.text = userFromDatabase.userSchoolID
@@ -79,6 +87,7 @@ class MainActivityPROFILE : AppCompatActivity() {
             }
         })
 
+        // Button click listeners for navigation
         taskBtn.setOnClickListener {
             val myIntent = Intent(this, MainActivityTASK::class.java)
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -91,15 +100,12 @@ class MainActivityPROFILE : AppCompatActivity() {
             startActivity(myIntent)
         }
 
-        profileBtn.setOnClickListener {
-            showToast("You are already in the Profile section.")
-        }
-
+        // Navigate to the Settings activity
         settingsBtn.setOnClickListener {
             startActivity(Intent(this, SideMainSETTINGS::class.java))
         }
     }
-
+    // Display a toast message
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
