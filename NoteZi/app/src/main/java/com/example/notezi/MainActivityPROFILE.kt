@@ -33,6 +33,9 @@ class MainActivityPROFILE : AppCompatActivity() {
         const val EXTRA_USER_PROFILE_IMAGE_URI = "com.example.notezi.EXTRA_USER_PROFILE_IMAGE_URI"
     }
 
+// Use a default profile image URI if no image is selected
+        val defaultImageUri = "android.resource://${packageName}/${R.drawable.joshhutchersonpic}"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_profile)
