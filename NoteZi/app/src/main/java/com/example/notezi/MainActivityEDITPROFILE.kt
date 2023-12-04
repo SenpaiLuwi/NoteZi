@@ -67,9 +67,6 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
             val userEmail = userEmailEditText.text.toString().takeIf { it.isNotBlank() }
             val userSchoolID = userSchoolIDEditText.text.toString().takeIf { it.isNotBlank() }
 
-            // Use a default profile image URI if no image is selected
-            val defaultImageUri = "android.resource://${packageName}/${R.drawable.joshhutchersonpic}"
-
             // VALIDATION OF THE USER INPUT
             if (userName == null) {
                 validateMsg("User Name", this)
@@ -118,8 +115,6 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
                 })
             }
         }
-
-
         // Load user data initially
         loadUserData()
     }
@@ -155,19 +150,35 @@ class MainActivityEDITPROFILE : AppCompatActivity() {
         }
     }
 
-// Function to update the UI with the entered user information
+    // Function to update the UI with the entered user information
     private fun updateProfileUI(imageUri: Uri?) {
         // If an image is selected, update the user profile image view
         if (imageUri != null) {
             userProfileImageView.setImageURI(imageUri)
         } else {
-            // If no image is selected, use the default image URL
-            val defaultImageUri = Uri.parse("android.resource://${packageName}/${R.drawable.icongithub}")
-            userProfileImageView.setImageURI(defaultImageUri)
-
-            // Store the selected image URI as the default image URI
-            selectedImageUri = defaultImageUri
+            // If no image is selected, load the user's profile image from the database
+            loadUserProfileImageFromDatabase()
         }
+    }
+
+    // Function to load the user's profile image from the database
+    private fun loadUserProfileImageFromDatabase() {
+        databaseReference.child(currentUserUid).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val userFromDatabase: User = dataSnapshot.getValue(User::class.java) ?: return
+
+                    // Load and display the user profile image using Glide
+                    Glide.with(this@MainActivityEDITPROFILE)
+                        .load(Uri.parse(userFromDatabase.userProfileImageUri))
+                        .into(userProfileImageView)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                showToast("Failed to retrieve user data from the database.")
+            }
+        })
     }
 
 

@@ -24,7 +24,7 @@ class MainActivityPROFILE : AppCompatActivity() {
     private lateinit var userProfileImageView: CircleImageView
 
     private lateinit var usersDatabaseReference: DatabaseReference
-    private lateinit var currentUserUid: String // Replace this with your user identifier logic
+    private lateinit var currentUserUid: String
 
     companion object {
         const val EXTRA_USER_NAME = "com.example.notezi.EXTRA_USER_NAME"
@@ -32,9 +32,6 @@ class MainActivityPROFILE : AppCompatActivity() {
         const val EXTRA_USER_SCHOOL_ID = "com.example.notezi.EXTRA_USER_SCHOOL_ID"
         const val EXTRA_USER_PROFILE_IMAGE_URI = "com.example.notezi.EXTRA_USER_PROFILE_IMAGE_URI"
     }
-
-// Use a default profile image URI if no image is selected
-        val defaultImageUri = "android.resource://${packageName}/${R.drawable.joshhutchersonpic}"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +63,7 @@ class MainActivityPROFILE : AppCompatActivity() {
                     userSchoolIDTextView.text = userFromDatabase.userSchoolID
 
                     // Load and display the user profile image using Glide
-                    if (userFromDatabase.userProfileImageUri.isNotBlank()) {
+                    if (userFromDatabase.userProfileImageUri!!.isNotBlank()) {
                         Glide.with(this@MainActivityPROFILE)
                             .load(Uri.parse(userFromDatabase.userProfileImageUri))
                             .into(userProfileImageView)

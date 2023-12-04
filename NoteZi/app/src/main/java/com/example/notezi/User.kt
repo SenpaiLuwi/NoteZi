@@ -4,5 +4,5 @@ data class User(
     val userName: String = "",
     val userEmail: String = "",
     val userSchoolID: String = "",
-    val userProfileImageUri: String = ""
+    val userProfileImageUri: String? = ""
 )
