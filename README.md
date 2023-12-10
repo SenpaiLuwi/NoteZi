@@ -45,18 +45,15 @@ https://github.com/rezenro23<br>
 
 How to Install:
 1. Use the Link for the installation (Make sure that you are on Mobile):<br>
-https://drive.google.com/file/d/19YUwiyeSmyMUGc-SbCN1PlI9IbyHdzkU/view?usp=sharing<br>
 https://github.com/SenpaiLuwi/NoteZi/blob/main/NoteZi.apk
 
-2. Copy the link to your clipboard. and go to Google and paste the link. If you click only a link an error message will appear "Fixed Access to doc-0s-54-docs.googleusercontent.com was denied".
+2. Click the "Download" button and click on the Google package installer after that wait for it to install.
 
-3. Click the "Download" button and click on the Google package installer after that wait for it to install.
+3. If a warning message says that the application has a virus click on continue anyway or install anyway.
 
-4. If a warning message says that the application has a virus click on continue anyway or install anyway.
+4. Once it is finished click on open and if a warning message occurs, ignore it or continue anyway.
 
-5. Once it is finished click on open and if a warning message occurs, ignore it or continue anyway.
-
-8. You can now use the "NoteZi" app! Enjoy!
+5. You can now use the "NoteZi" app! Enjoy!
 
 Other Notes:
 - As of now this code is on FireBase DataBase we will try to create a code by using phone storage for easier access and without using mobile data or wifi.
