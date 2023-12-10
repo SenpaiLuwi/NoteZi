@@ -47,7 +47,7 @@ How to Install:
 1. Use the Link for the installation (Make sure that you are on Mobile):<br>
 https://github.com/SenpaiLuwi/NoteZi/blob/main/NoteZi.apk
 
-2. Click the "Download" button and click on the Google package installer after that wait for it to install.
+2. Click the "Download" button and wait for it to install.
 
 3. If a warning message says that the application has a virus click on continue anyway or install anyway.
 
